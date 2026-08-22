@@ -1,0 +1,9 @@
+{
+  "name":"Nikoleta Wellness CEO",
+  "short_name":"Wellness CEO",
+  "start_url":".",
+  "display":"standalone",
+  "background_color":"#f7f8f6",
+  "theme_color":"#3f7d45",
+  "lang":"el"
+}
