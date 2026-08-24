@@ -1,10 +1,3 @@
-# Nikoleta Wellness CEO
-
-Προσωπική web εφαρμογή για:
-- CRM πελατών και follow-ups
-- Tanita μετρήσεις
-- CEO Planner
-- Έσοδα / έξοδα
-- Backup / restore δεδομένων
-
-Τα δεδομένα αποθηκεύονται τοπικά στον browser με localStorage.
+# Nikoleta Wellness CEO – Final
+PWA για CRM, ραντεβού, πελάτες, συνεργάτες, Tanita, διατροφικά προγράμματα, follow-ups, planner και οικονομικά.
+Τα δεδομένα αποθηκεύονται τοπικά στον browser.

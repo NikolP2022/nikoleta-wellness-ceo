@@ -2,40 +2,30 @@
 <html lang="el">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#3f7d45">
-<meta name="description" content="Nikoleta Wellness CEO — CRM, Tanita, Planner και Οικονομικά">
-<title>Nikoleta Wellness CEO</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0b6b3a">
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="styles.css">
+<title>Nikoleta Wellness CEO</title>
 </head>
 <body>
-<header>
-  <div class="brand"><div class="leaf">🌿</div><div><b>Nikoleta</b><span>Wellness CEO</span></div></div>
-  <button id="addClientTop" class="primary">＋ Νέος πελάτης</button>
+<header class="topbar">
+  <div><strong>Nikoleta Wellness CEO</strong><small>Οργάνωση επιχείρησης & πελατών</small></div>
+  <button id="backupBtn" class="ghost">💾 Αντίγραφο</button>
 </header>
-<nav>
-  <button data-view="dashboard" class="active">Αρχική</button>
-  <button data-view="clients">Πελάτες</button>
-  <button data-view="tanita">Tanita</button>
-  <button data-view="planner">Planner</button>
-  <button data-view="finance">Οικονομικά</button>
-  <button data-view="backup">Αντίγραφο</button>
+<nav id="nav">
+  <button data-view="dashboard">🏠 Αρχική</button>
+  <button data-view="appointments">📅 Ραντεβού</button>
+  <button data-view="clients">👥 Πελάτες</button>
+  <button data-view="partners">🤝 Συνεργάτες</button>
+  <button data-view="tanita">⚖️ Tanita</button>
+  <button data-view="programs">🥤 Προγράμματα</button>
+  <button data-view="followups">📞 Follow-ups</button>
+  <button data-view="finance">💰 Οικονομικά</button>
+  <button data-view="planner">📝 Planner</button>
 </nav>
 <main id="app"></main>
-
-<dialog id="clientDialog">
-<form method="dialog" id="clientForm">
-<h2>Νέος πελάτης</h2>
-<input name="name" placeholder="Ονοματεπώνυμο" required>
-<input name="phone" placeholder="Τηλέφωνο">
-<input name="email" type="email" placeholder="Email">
-<input name="nextFollowUp" type="date" aria-label="Επόμενο follow-up">
-<textarea name="notes" placeholder="Σημειώσεις"></textarea>
-<div class="actions"><button value="cancel">Ακύρωση</button><button class="primary" value="ok">Αποθήκευση</button></div>
-</form>
-</dialog>
-
+<input id="restoreInput" type="file" accept=".json" hidden>
 <script src="app.js"></script>
 </body>
 </html>
