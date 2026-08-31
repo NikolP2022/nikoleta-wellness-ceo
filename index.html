@@ -11,7 +11,7 @@
 <body>
 <header class="topbar">
   <div><strong>Nikoleta Wellness CEO</strong><small>Οργάνωση επιχείρησης & πελατών</small></div>
-  <button id="backupBtn" class="ghost">💾 Αντίγραφο</button>
+  <span class="top-status">☁️ Supabase</span>
 </header>
 <nav id="nav">
   <button data-view="dashboard">🏠 Αρχική</button>
@@ -21,11 +21,15 @@
   <button data-view="tanita">⚖️ Tanita</button>
   <button data-view="programs">🥤 Προγράμματα</button>
   <button data-view="followups">📞 Follow-ups</button>
+  <button data-view="orders">📦 Παραγγελίες</button>
   <button data-view="finance">💰 Οικονομικά</button>
   <button data-view="planner">📝 Planner</button>
+  <button data-view="reminders">🔔 Υπενθυμίσεις</button>
+  <button data-view="success">🏆 Daily Success</button>
+  <button data-view="documents">📁 Έγγραφα</button>
 </nav>
 <main id="app"></main>
-<input id="restoreInput" type="file" accept=".json" hidden>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="app.js"></script>
 </body>
 </html>
