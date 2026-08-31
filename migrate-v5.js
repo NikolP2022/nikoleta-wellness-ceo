@@ -1,0 +1,1 @@
+(()=>{try{const old=localStorage.getItem("nwceo_local_v5");const cur=localStorage.getItem("nwceo_data_v6");if(old&&!cur){localStorage.setItem("nwceo_data_v6",old)}}catch(e){}})();
