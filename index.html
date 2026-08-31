@@ -15,26 +15,17 @@
   <div class="top-right"><span class="top-status">🌿 Healthy Life</span><button class="account-btn" data-auth>☁️ Σύνδεση</button></div>
 </header>
 <nav id="nav">
-  <button type="button" data-view="dashboard">🏠 Αρχική</button>
-  <button type="button" data-view="appointments">📅 Ραντεβού</button>
-  <button type="button" data-view="clients">👥 Πελάτες</button>
-  <button type="button" data-view="partners">🤝 Συνεργάτες</button>
-  <button type="button" data-view="measurements">⚖️ Tanita</button>
-  <button type="button" data-view="programs">🥤 Προγράμματα</button>
-  <button type="button" data-view="followups">📞 Follow-ups</button>
-  <button type="button" data-view="orders">📦 Παραγγελίες</button>
-  <button type="button" data-view="finance">💰 Οικονομικά</button>
-  <button type="button" data-view="tasks">📝 Planner</button>
-  <button type="button" data-view="reminders">🔔 Υπενθυμίσεις</button>
-  <button type="button" data-view="success">🏆 Daily Success</button>
-  <button type="button" data-view="documents">📁 Έγγραφα</button>
+  <button type="button" data-view="dashboard">🏠 Αρχική</button><button type="button" data-view="appointments">📅 Ραντεβού</button><button type="button" data-view="clients">👥 Πελάτες</button><button type="button" data-view="partners">🤝 Συνεργάτες</button><button type="button" data-view="measurements">⚖️ Tanita</button><button type="button" data-view="programs">🥤 Προγράμματα</button><button type="button" data-view="followups">📞 Follow-ups</button><button type="button" data-view="orders">📦 Παραγγελίες</button><button type="button" data-view="finance">💰 Οικονομικά</button><button type="button" data-view="tasks">📝 Planner</button><button type="button" data-view="reminders">🔔 Υπενθυμίσεις</button><button type="button" data-view="success">🏆 Daily Success</button><button type="button" data-view="documents">📁 Έγγραφα</button>
 </nav>
 <div class="sync-badge local">📱 Μόνο στη συσκευή</div>
 <main id="app"></main>
+<script>
+try{if(!localStorage.getItem('nwceo_final_v1')&&localStorage.getItem('nwceo_data_v6'))localStorage.setItem('nwceo_final_v1',localStorage.getItem('nwceo_data_v6'))}catch(e){}
+</script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="app-final.js"></script>
 <script>
-document.addEventListener('click',e=>{const b=e.target.closest('[data-auth]');if(b && b.dataset.auth===''){e.preventDefault();openAuth()}});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-auth]');if(b&&b.dataset.auth===''){e.preventDefault();openAuth()}});
 if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
 </script>
 </body>
