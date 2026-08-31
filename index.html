@@ -11,8 +11,8 @@
 </head>
 <body>
 <header class="topbar">
-  <div><strong>Nikoleta Wellness CEO</strong><small>Οργάνωση επιχείρησης & πελατών</small></div>
-  <span class="top-status">🌿 Healthy Life</span>
+  <div class="brand-title"><strong>Nikoleta Wellness CEO</strong><small>Οργάνωση επιχείρησης & πελατών</small></div>
+  <div class="top-right"><span class="top-status">🌿 Healthy Life</span><button class="account-btn" data-auth="open">☁️ Σύνδεση</button></div>
 </header>
 <nav id="nav">
   <button type="button" data-view="dashboard">🏠 Αρχική</button>
@@ -28,14 +28,11 @@
   <button type="button" data-view="reminders">🔔 Υπενθυμίσεις</button>
   <button type="button" data-view="success">🏆 Daily Success</button>
   <button type="button" data-view="documents">📁 Έγγραφα</button>
-  <button type="button" data-auth>☁️ Σύνδεση</button>
 </nav>
-<div class="sync-badge local">📱 Τοπική αποθήκευση</div>
+<div class="sync-badge local">📱 Μόνο στη συσκευή</div>
 <main id="app"></main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="migrate-v5.js"></script>
-<script src="app-v3.js"></script>
-<script src="documents-addon.js"></script>
+<script src="app-final.js"></script>
 <script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}</script>
 </body>
 </html>
