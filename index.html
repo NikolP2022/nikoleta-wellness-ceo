@@ -30,20 +30,6 @@
 </nav>
 <main id="app"></main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-<script src="app.js"></script>
-<script>
-// Ασφαλής πλοήγηση: τα κουμπιά του μενού ανοίγουν πάντα την αντίστοιχη ενότητα.
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('#nav button[data-view]').forEach(button => {
-    button.addEventListener('click', event => {
-      event.preventDefault();
-      const view = button.dataset.view;
-      if (typeof window.nav === 'function') {
-        window.nav(view);
-      }
-    });
-  });
-});
-</script>
+<script src="app-fixed.js"></script>
 </body>
 </html>
