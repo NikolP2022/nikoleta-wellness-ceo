@@ -12,7 +12,7 @@
 <body>
 <header class="topbar">
   <div class="brand-title"><strong>Nikoleta Wellness CEO</strong><small>Οργάνωση επιχείρησης & πελατών</small></div>
-  <div class="top-right"><span class="top-status">🌿 Healthy Life</span><button class="account-btn" data-auth="open">☁️ Σύνδεση</button></div>
+  <div class="top-right"><span class="top-status">🌿 Healthy Life</span><button class="account-btn" data-auth>☁️ Σύνδεση</button></div>
 </header>
 <nav id="nav">
   <button type="button" data-view="dashboard">🏠 Αρχική</button>
@@ -33,6 +33,9 @@
 <main id="app"></main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="app-final.js"></script>
-<script>if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}</script>
+<script>
+document.addEventListener('click',e=>{const b=e.target.closest('[data-auth]');if(b && b.dataset.auth===''){e.preventDefault();openAuth()}});
+if('serviceWorker' in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
+</script>
 </body>
 </html>
