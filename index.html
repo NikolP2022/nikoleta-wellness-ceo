@@ -14,22 +14,36 @@
   <span class="top-status">☁️ Supabase</span>
 </header>
 <nav id="nav">
-  <button data-view="dashboard">🏠 Αρχική</button>
-  <button data-view="appointments">📅 Ραντεβού</button>
-  <button data-view="clients">👥 Πελάτες</button>
-  <button data-view="partners">🤝 Συνεργάτες</button>
-  <button data-view="tanita">⚖️ Tanita</button>
-  <button data-view="programs">🥤 Προγράμματα</button>
-  <button data-view="followups">📞 Follow-ups</button>
-  <button data-view="orders">📦 Παραγγελίες</button>
-  <button data-view="finance">💰 Οικονομικά</button>
-  <button data-view="planner">📝 Planner</button>
-  <button data-view="reminders">🔔 Υπενθυμίσεις</button>
-  <button data-view="success">🏆 Daily Success</button>
-  <button data-view="documents">📁 Έγγραφα</button>
+  <button type="button" data-view="dashboard">🏠 Αρχική</button>
+  <button type="button" data-view="appointments">📅 Ραντεβού</button>
+  <button type="button" data-view="clients">👥 Πελάτες</button>
+  <button type="button" data-view="partners">🤝 Συνεργάτες</button>
+  <button type="button" data-view="tanita">⚖️ Tanita</button>
+  <button type="button" data-view="programs">🥤 Προγράμματα</button>
+  <button type="button" data-view="followups">📞 Follow-ups</button>
+  <button type="button" data-view="orders">📦 Παραγγελίες</button>
+  <button type="button" data-view="finance">💰 Οικονομικά</button>
+  <button type="button" data-view="planner">📝 Planner</button>
+  <button type="button" data-view="reminders">🔔 Υπενθυμίσεις</button>
+  <button type="button" data-view="success">🏆 Daily Success</button>
+  <button type="button" data-view="documents">📁 Έγγραφα</button>
 </nav>
 <main id="app"></main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="app.js"></script>
+<script>
+// Ασφαλής πλοήγηση: τα κουμπιά του μενού ανοίγουν πάντα την αντίστοιχη ενότητα.
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('#nav button[data-view]').forEach(button => {
+    button.addEventListener('click', event => {
+      event.preventDefault();
+      const view = button.dataset.view;
+      if (typeof window.nav === 'function') {
+        window.nav(view);
+      }
+    });
+  });
+});
+</script>
 </body>
 </html>
