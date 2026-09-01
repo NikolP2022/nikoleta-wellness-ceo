@@ -14,17 +14,10 @@
     documents:{table:'documents',alias:'Έγγραφα',fields:{title:'Τίτλος',file_name:'file_name',file_path:'file_path',file_type:'file_type',file_size:'file_size',related_type:'related_type',related_id:'related_id'}}
   };
   const tableMap={},outputMap={};
-  Object.values(schemas).forEach(s=>{
-    tableMap[s.table]=s.table;if(s.alias)tableMap[s.alias]=s.table;
-    outputMap[s.table]={};Object.entries(s.fields).forEach(([dbKey,uiKey])=>outputMap[s.table][dbKey]=uiKey);
-  });
-  const wrap=(builder,table)=>new Proxy(builder,{get(target,prop,receiver){
-    if(prop==='then')return(resolve,reject)=>target.then(result=>{if(result?.data&&Array.isArray(result.data))result.data=result.data.map(row=>toUi(row,table));else if(result?.data&&typeof result.data==='object')result.data=toUi(result.data,table);return resolve?.(result)},reject);
-    const value=target[prop];if(typeof value!=='function')return Reflect.get(target,prop,receiver);
-    return(...args)=>{if(['upsert','insert','update'].includes(prop)&&args[0])args[0]=Array.isArray(args[0])?args[0].map(o=>toDb(o,table)):toDb(args[0],table);const next=value.apply(target,args);return next&&typeof next==='object'&&typeof next.then==='function'?wrap(next,table):next};
-  }});
-  const toDb=(o,table)=>{if(!o||typeof o!=='object')return o;const out={...o},m=outputMap[table]||{};for(const [dbKey,uiKey] of Object.entries(m))if(Object.prototype.hasOwnProperty.call(out,uiKey)&&!Object.prototype.hasOwnProperty.call(out,dbKey)){out[dbKey]=out[uiKey];delete out[uiKey]}return out};
-  const toUi=(row,table)=>{const out={...row},m=outputMap[table]||{};for(const [dbKey,uiKey] of Object.entries(m))if(Object.prototype.hasOwnProperty.call(row,dbKey))out[uiKey]=row[dbKey];return out};
+  Object.values(schemas).forEach(s=>{tableMap[s.table]=s.table;if(s.alias)tableMap[s.alias]=s.table;outputMap[s.table]={};Object.entries(s.fields).forEach(([dbKey,uiKey])=>outputMap[s.table][dbKey]=uiKey)});
+  const toDb=(o,table)=>{if(!o||typeof o!=='object')return o;const out={...o},m=outputMap[table]||{};for(const [dbKey,uiKey] of Object.entries(m))if(Object.prototype.hasOwnProperty.call(out,uiKey)&&!Object.prototype.hasOwnProperty.call(out,dbKey)){out[dbKey]=out[uiKey];delete out[uiKey]}if(table==='finance_transactions'&&out.transaction_type)out.transaction_type=out.transaction_type==='Έσοδο'?'income':out.transaction_type==='Έξοδο'?'expense':out.transaction_type;return out};
+  const toUi=(row,table)=>{const out={...row},m=outputMap[table]||{};for(const [dbKey,uiKey] of Object.entries(m))if(Object.prototype.hasOwnProperty.call(row,dbKey))out[uiKey]=row[dbKey];if(table==='finance_transactions'&&out.transaction_type)out.type=out.transaction_type==='income'?'Έσοδο':out.transaction_type==='expense'?'Έξοδο':out.transaction_type;return out};
+  const wrap=(builder,table)=>new Proxy(builder,{get(target,prop,receiver){if(prop==='then')return(resolve,reject)=>target.then(result=>{if(result?.data&&Array.isArray(result.data))result.data=result.data.map(row=>toUi(row,table));else if(result?.data&&typeof result.data==='object')result.data=toUi(result.data,table);return resolve?.(result)},reject);const value=target[prop];if(typeof value!=='function')return Reflect.get(target,prop,receiver);return(...args)=>{if(['upsert','insert','update'].includes(prop)&&args[0])args[0]=Array.isArray(args[0])?args[0].map(o=>toDb(o,table)):toDb(args[0],table);const next=value.apply(target,args);return next&&typeof next==='object'&&typeof next.then==='function'?wrap(next,table):next}}});
   const original=window.supabase?.createClient;if(!original)return;
   window.supabase.createClient=function(...args){const client=original.apply(this,args),from=client.from.bind(client);client.from=name=>wrap(from(tableMap[name]||name),tableMap[name]||name);return client};
 })();
