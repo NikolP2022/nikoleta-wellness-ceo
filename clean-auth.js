@@ -7,6 +7,7 @@
   const msg=t=>{const e=$('#am');if(e){e.textContent=t;e.style.display='block'}};
   const fields=()=>({email:$('#ae')?.value.trim()||'',password:$('#ap')?.value||''});
   const status=async()=>{const b=$('.account-btn');if(!b||!client)return;try{const {data,error}=await client.auth.getSession();const ok=!error&&!!data?.session?.user;b.textContent=ok?'☁️ Συνδεδεμένη':'☁️ Σύνδεση';b.dataset.authState=ok?'signed-in':'signed-out';b.classList.toggle('connected',ok);b.setAttribute('aria-label',ok?'Ο λογαριασμός είναι συνδεδεμένος':'Σύνδεση')}catch{b.textContent='☁️ Σύνδεση'}};
+  const refreshApp=async()=>{try{if(typeof window.loadSession==='function'){await window.loadSession();return}}catch{}if(typeof window.render==='function')window.render()};
   const addForgot=()=>{const box=$('#auth .modal-actions');if(box&&!$('#auth [data-auth="forgot"]'))box.insertAdjacentHTML('afterend','<button type="button" class="link-button" data-auth="forgot">🔑 Ξέχασα τον κωδικό μου</button>')};
   async function act(mode){
     if(!client)return msg('❌ Δεν φορτώθηκε η σύνδεση. Κάνε ανανέωση.');
@@ -22,13 +23,13 @@
       if(r.error)throw r.error;
       if(mode==='magic')return msg('✅ Έλεγξε το email σου και πάτησε τον σύνδεσμο.');
       if(mode==='signup'&&!r.data.session)return msg('✅ Ο λογαριασμός δημιουργήθηκε. Έλεγξε το email σου.');
-      if(r.data.session){msg('✅ Συνδέθηκες!');$('#auth')?.remove();await status();window.dispatchEvent(new Event('nwceo-auth-updated'));if(typeof window.render==='function')window.render();}
+      if(r.data.session){$('#auth')?.remove();await status();await refreshApp();}
     }catch(e){msg('❌ '+(e?.message||'Η σύνδεση απέτυχε.'))}
   }
   document.addEventListener('click',e=>{const b=e.target.closest?.('.account-btn');if(b){e.preventDefault();if(b.dataset.authState==='signed-in')return;window.openAuth?.();setTimeout(addForgot,0)}},true);
   document.addEventListener('click',e=>{const b=e.target.closest?.('[data-auth]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();act(b.dataset.auth)},true);
   new MutationObserver(()=>{addForgot();status()}).observe(document.body,{childList:true,subtree:true});
-  client?.auth.onAuthStateChange(()=>setTimeout(status,50));
+  client?.auth.onAuthStateChange(()=>setTimeout(async()=>{await status();await refreshApp()},50));
   window.addEventListener('focus',status);window.addEventListener('load',status);window.addEventListener('pageshow',status);window.addEventListener('nwceo-auth-updated',status);
-  setInterval(status,1000);status();
+  setInterval(status,1500);status();
 })();
