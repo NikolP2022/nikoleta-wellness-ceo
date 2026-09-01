@@ -1,5 +1,5 @@
-const CACHE='nwceo-v99';
-const FILES=['./','./index.html','./styles.css?v=99','./cloud-hub.css?v=99','./app-final.js?v=99','./db-table-fix.js?v=99','./db-schema-compat.js?v=99','./clean-auth.js?v=99','./session-ui-fix.js?v=99','./cloud-sync-fix.js?v=99','./manifest.json'];
+const CACHE='nwceo-v100';
+const FILES=['./','./index.html','./styles.css?v=100','./cloud-hub.css?v=100','./app-final.js?v=100','./db-table-fix.js?v=100','./db-schema-compat.js?v=100','./clean-auth.js?v=100','./cloud-sync-fix.js?v=100','./manifest.json'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)))});
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;const u=new URL(e.request.url);if(u.origin!==location.origin)return;
