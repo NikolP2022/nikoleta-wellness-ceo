@@ -23,13 +23,12 @@
       if(r.error)throw r.error;
       if(mode==='magic')return msg('✅ Έλεγξε το email σου και πάτησε τον σύνδεσμο.');
       if(mode==='signup'&&!r.data.session)return msg('✅ Ο λογαριασμός δημιουργήθηκε. Έλεγξε το email σου.');
-      if(r.data.session){$('#auth')?.remove();await status();await refreshApp();}
+      if(r.data.session){$('#auth')?.remove();await status();await refreshApp()}
     }catch(e){msg('❌ '+(e?.message||'Η σύνδεση απέτυχε.'))}
   }
   document.addEventListener('click',e=>{const b=e.target.closest?.('.account-btn');if(b){e.preventDefault();if(b.dataset.authState==='signed-in')return;window.openAuth?.();setTimeout(addForgot,0)}},true);
   document.addEventListener('click',e=>{const b=e.target.closest?.('[data-auth]');if(!b)return;e.preventDefault();e.stopImmediatePropagation();act(b.dataset.auth)},true);
-  new MutationObserver(()=>{addForgot();status()}).observe(document.body,{childList:true,subtree:true});
   client?.auth.onAuthStateChange(()=>setTimeout(async()=>{await status();await refreshApp()},50));
-  window.addEventListener('focus',status);window.addEventListener('load',status);window.addEventListener('pageshow',status);window.addEventListener('nwceo-auth-updated',status);
-  setInterval(status,1500);status();
+  window.addEventListener('load',status,{once:true});
+  status();
 })();
