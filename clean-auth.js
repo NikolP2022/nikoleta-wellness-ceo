@@ -2,11 +2,11 @@
   const URL='https://vbkuvexyqehmpeeejqbh.supabase.co';
   const KEY='sb_publishable__nczNPWr3do_hqi6MCS0AQ_fjYCXhGk';
   const APP='https://nikolp2022.github.io/nikoleta-wellness-ceo/';
-  const client=window.supabase?.createClient?.(URL,KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true});
+  const client=window.supabase?.createClient?.(URL,KEY,{auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}});
   const $=s=>document.querySelector(s);
   const msg=t=>{const e=$('#am');if(e){e.textContent=t;e.style.display='block'}};
   const fields=()=>({email:$('#ae')?.value.trim()||'',password:$('#ap')?.value||''});
-  const status=async()=>{const b=$('.account-btn');if(!b||!client)return;try{const {data,error}=await client.auth.getSession();const ok=!error&&!!data?.session?.user;b.textContent=ok?'☁️ Συνδεδεμένη':'☁️ Σύνδεση';b.dataset.authState=ok?'signed-in':'signed-out';b.classList.toggle('connected',ok);b.setAttribute('aria-label',ok?'Ο λογαριασμός είναι συνδεδεμένος':'Σύνδεση');}catch{b.textContent='☁️ Σύνδεση'}};
+  const status=async()=>{const b=$('.account-btn');if(!b||!client)return;try{const {data,error}=await client.auth.getSession();const ok=!error&&!!data?.session?.user;b.textContent=ok?'☁️ Συνδεδεμένη':'☁️ Σύνδεση';b.dataset.authState=ok?'signed-in':'signed-out';b.classList.toggle('connected',ok);b.setAttribute('aria-label',ok?'Ο λογαριασμός είναι συνδεδεμένος':'Σύνδεση')}catch{b.textContent='☁️ Σύνδεση'}};
   const addForgot=()=>{const box=$('#auth .modal-actions');if(box&&!$('#auth [data-auth="forgot"]'))box.insertAdjacentHTML('afterend','<button type="button" class="link-button" data-auth="forgot">🔑 Ξέχασα τον κωδικό μου</button>')};
   async function act(mode){
     if(!client)return msg('❌ Δεν φορτώθηκε η σύνδεση. Κάνε ανανέωση.');
