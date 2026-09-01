@@ -1,6 +1,15 @@
 (()=>{
 const URL='https://vbkuvexyqehmpeeejqbh.supabase.co',KEY='sb_publishable__nczNPWr3do_hqi6MCS0AQ_fjYCXhGk';
-const client=window.supabase?.createClient(URL,KEY); if(!client)return;
+const original=window.supabase?.createClient?.bind(window.supabase); if(!original)return;
+let singleton=null;
+window.supabase.createClient=(url,key,options)=>{
+  if(url===URL&&key===KEY){
+    if(!singleton) singleton=original(url,key,options);
+    return singleton;
+  }
+  return original(url,key,options);
+};
+const client=window.supabase.createClient(URL,KEY); if(!client)return;
 const tables={clients:'clients',appointments:'Ραντεβού',partners:'Συνεργάτες',measurements:'tanita_measurements',programs:'Προγράμματα',followups:'follow_ups',orders:'Παραγγελίες',finance:'finance_transactions',tasks:'planner_tasks',reminders:'Υπενθυμίσεις',success:'daily_success',documents:'Έγγραφα'};
 const localKey='nwceo_final_v1';
 client.auth.onAuthStateChange(async(event,session)=>{
