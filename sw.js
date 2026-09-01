@@ -1,5 +1,5 @@
-const CACHE='nwceo-v21';
-const FILES=['./','./index.html','./styles.css?v=21','./migrate-local-v8.js?v=21','./app-final.js?v=21','./auth-fix.js?v=6','./auth-status-fix-v16.js?v=21','./ui-fixes-v13.js?v=21','./auth-status-final.js?v=21','./auth-status-hard-fix.js?v=1','./manifest.json'];
+const CACHE='nwceo-v22';
+const FILES=['./','./index.html','./styles.css?v=22','./migrate-local-v8.js?v=22','./app-final.js?v=22','./auth-fix.js?v=7','./auth-status-fix-v16.js?v=22','./ui-fixes-v13.js?v=22','./auth-status-final.js?v=22','./auth-status-hard-fix.js?v=2','./manifest.json'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)))});
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
 self.addEventListener('fetch',e=>{if(e.request.method!=='GET')return;const u=new URL(e.request.url);if(u.origin===location.origin&&(u.pathname.endsWith('/')||u.pathname.endsWith('/index.html'))){e.respondWith(fetch(e.request).then(r=>{if(r.ok)caches.open(CACHE).then(c=>c.put(e.request,r.clone()));return r}).catch(()=>caches.match(e.request).then(r=>r||caches.match('./index.html'))));return}e.respondWith(caches.match(e.request).then(cached=>cached||fetch(e.request).then(r=>{if(r.ok&&u.origin===location.origin)caches.open(CACHE).then(c=>c.put(e.request,r.clone()));return r})));});
