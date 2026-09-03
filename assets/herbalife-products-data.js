@@ -1,0 +1,1 @@
+window.HERBALIFE_HERO_IMAGE='data:image/jpeg;base64,PLACEHOLDER';
