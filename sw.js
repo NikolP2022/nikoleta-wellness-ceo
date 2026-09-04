@@ -1,20 +1,6 @@
-const CACHE='nwceo-v170';
+const CACHE='nwceo-v171';
 const FILES=[
-  './',
-  './index.html',
-  './styles.css?v=130',
-  './app-complete-v116.js?v=116',
-  './push-v116.js?v=116',
-  './stability-v118.js?v=118',
-  './event-fix-v119.js?v=119',
-  './sync-v120.js?v=120',
-  './partner-crud-v121.js?v=121',
-  './universal-crud-v123.js?v=123',
-  './ui-fix-v124.js?v=125',
-  './ui-fix-v126.js?v=128',
-  './appointments-v130.js?v=130',
-  './stability-fix-v135.js?v=135',
-  './manifest.json'
+  './','./index.html','./styles.css?v=136','./app-complete-v116.js?v=116','./push-v116.js?v=116','./stability-v118.js?v=118','./event-fix-v119.js?v=119','./sync-v120.js?v=120','./partner-crud-v121.js?v=121','./universal-crud-v123.js?v=123','./ui-fix-v124.js?v=125','./ui-fix-v126.js?v=128','./appointments-v130.js?v=130','./stability-fix-v135.js?v=135','./professional-upgrade-v136.js?v=136','./manifest.json'
 ];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)))});
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));
