@@ -1,0 +1,5 @@
+(()=>{'use strict';
+const st=document.createElement('style');st.textContent='.modal{z-index:1000!important}.modal form{position:relative;z-index:1001}.modal input,.modal select,.modal textarea{position:relative;z-index:1002;pointer-events:auto!important;touch-action:manipulation;background:#fff!important;color:#172018!important;opacity:1!important}.modal select{min-height:44px}.modal input[type=time]{min-width:170px}.modal .actions button{min-height:44px}';document.head.appendChild(st);
+document.addEventListener('focusin',e=>{if(e.target.closest('.modal')&&['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName)){e.target.removeAttribute('disabled');e.target.removeAttribute('readonly')}},true);
+document.addEventListener('change',e=>{if(e.target.matches('.modal [name=start_time]')&&!e.target.value){e.target.focus()}},true);
+})();
