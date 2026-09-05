@@ -18,7 +18,7 @@ function blankNewForm(root){
   });
 }
 function sweep(){document.querySelectorAll('.modal,.ap130-modal').forEach(blankNewForm)}
-document.addEventListener('click',()=>setTimeout(sweep,0));
+document.addEventListener('click',e=>{if(e.target.closest('[data-slot]'))return;setTimeout(sweep,0)});
 window.addEventListener('load',()=>setTimeout(sweep,0),{once:true});
 window.addEventListener('hashchange',()=>setTimeout(sweep,0));
 })();
