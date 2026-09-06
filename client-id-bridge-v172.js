@@ -12,29 +12,21 @@ function resolve(value){
  return hit?.id||null;
 }
 function isCrudForm(form){return !!form?.closest?.('.crud-box')}
-function prepare(form){
+// IMPORTANT: never replace the visible client name with the UUID while the user is typing.
+// The visible field stays as the name. Only the value presented to the existing CRUD handler
+// is temporarily converted at submit time.
+document.addEventListener('submit',e=>{
+ const form=e.target;
  if(!isCrudForm(form))return;
  const fields=[...form.querySelectorAll('input[name="client_id"],select[name="client_id"]')];
  for(const el of fields){
+   if(el.dataset.clientBridgeBusy==='1')continue;
    const uuid=resolve(el.value);
-   if(el.tagName==='SELECT'){
-     el.value=uuid||'';
-   }else if(el.type==='text'){
-     el.value=uuid||'';
-   }
+   if(!uuid)continue;
+   const original=el.value;
+   el.dataset.clientBridgeBusy='1';
+   el.value=uuid;
+   setTimeout(()=>{el.value=original;delete el.dataset.clientBridgeBusy},0);
  }
-}
-// Generic CRUD forms use UUID foreign keys. The visible client-name field may contain Greek text;
-// convert it to the real client UUID immediately before the CRUD handler reads FormData.
-document.addEventListener('submit',e=>prepare(e.target),true);
-// Safety net for forms opened after navigation.
-const scan=()=>document.querySelectorAll('.crud-box form').forEach(f=>{
-  const i=f.querySelector('input[name="client_id"]');
-  if(i&&!UUID.test(i.value||'')){
-    const uuid=resolve(i.value);
-    if(uuid)i.dataset.resolvedClientId=uuid;
-  }
-});
-if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',scan);else scan();
-new MutationObserver(scan).observe(document.getElementById('app')||document.body,{childList:true,subtree:true});
+},true);
 })();
