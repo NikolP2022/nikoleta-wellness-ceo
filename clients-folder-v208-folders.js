@@ -17,8 +17,7 @@ document.head.appendChild(css);
 function transform(){
   if(location.hash!=='#clients'&&location.hash!=='#clients/')return;
   const list=document.querySelector('.nw206 .clientlist');
-  if(!list)return;
-  if(list.dataset.nw208==='1')return;
+  if(!list||list.dataset.nw208==='1')return;
   const rows=[...list.querySelectorAll('.clientrow')];
   if(!rows.length)return;
   list.classList.add('nw208-folders');
@@ -26,14 +25,16 @@ function transform(){
     const open=row.querySelector('[data-open]'),edit=row.querySelector('[data-edit-client]'),del=row.querySelector('[data-delete-client]');
     if(!open)return;
     const info=row.querySelector('.clientinfo');
-    const avatar=info?.querySelector('.miniavatar');
     const name=info?.querySelector('b')?.textContent||'Πελάτης';
     const muted=[...info?.querySelectorAll('.muted')||[]].map(x=>x.textContent.trim()).filter(Boolean).join('');
     const chips=[...info?.querySelectorAll('.chip')||[]].map(x=>x.textContent.trim()).filter(Boolean);
-    const folder=document.createElement('article');
-    folder.className='nw208-folder';
-    folder.innerHTML=`<div><div class="nw208-folder-head"><div class="nw208-folder-icon">📁</div><div class="nw208-folder-info"><b>${esc(name)}</b><span>${esc(muted||'Πλήρης ψηφιακός φάκελος')}</span></div></div><div class="nw208-folder-meta">${chips.map(x=>`<span class="nw208-folder-chip">${esc(x)}</span>`).join('')}</div></div><div class="nw208-folder-actions"><button type="button" data-open="${esc(open.dataset.open)}">📂 Άνοιγμα φακέλου</button><button type="button" data-edit-client="${esc(edit?.dataset.editClient||'')}">✏️ Επεξεργασία</button><button type="button" class="danger" data-delete-client="${esc(del?.dataset.deleteClient||'')}">🗑️ Διαγραφή</button></div>`;
-    list.replaceChild(folder,row);
+    const actions=document.createElement('div');actions.className='nw208-folder-actions';
+    if(open)actions.appendChild(open);
+    if(edit)actions.appendChild(edit);
+    if(del)actions.appendChild(del);
+    const folder=document.createElement('article');folder.className='nw208-folder';
+    const head=document.createElement('div');head.innerHTML=`<div class="nw208-folder-head"><div class="nw208-folder-icon">📁</div><div class="nw208-folder-info"><b>${esc(name)}</b><span>${esc(muted||'Πλήρης ψηφιακός φάκελος')}</span></div></div><div class="nw208-folder-meta">${chips.map(x=>`<span class="nw208-folder-chip">${esc(x)}</span>`).join('')}</div>`;
+    folder.append(head,actions);list.replaceChild(folder,row);
   });
   list.dataset.nw208='1';
 }
