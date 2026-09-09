@@ -1,0 +1,3 @@
+Nikoleta Wellness CEO — deployment refresh 221
+
+This file intentionally triggers the GitHub Pages deployment workflow so the current main branch is republished.
