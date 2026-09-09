@@ -27,8 +27,12 @@ jobs:
         uses: actions/setup-node@v7
         with:
           node-version: '24'
-      - name: Syntax check completion module
-        run: node --check completion-v230.js
+      - name: Syntax check new modules
+        run: |
+          node --check modules-v234.js
+          node --check modules-v235.js
+          node --check sw-v234.js
+          node --check completion-v230.js
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload site
