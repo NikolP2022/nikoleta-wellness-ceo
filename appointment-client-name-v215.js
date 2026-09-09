@@ -5,7 +5,7 @@ function fix(root=document){
   const forms=root.querySelectorAll?.('#ap130-form')||[];
   forms.forEach(form=>{
     const modal=form.closest('.ap130-modal');
-    let name=form.querySelector('input[name="client_name"]');
+    const name=form.querySelector('input[name="client_name"]');
     const hidden=form.querySelector('input[name="client_id"]');
     if(!name)return;
     // Keep the field as a normal editable text input on every device.
@@ -18,12 +18,15 @@ function fix(root=document){
     name.type='text';
     name.placeholder='Γράψε το όνομα του πελάτη';
     name.autocomplete='name';
-    // New registration: always start with an empty customer name.
-    if(!modal?.dataset?.id && !form.dataset.nw215New){
+    const editing=!!modal?.querySelector('.crud-head h2')?.textContent?.includes('Επεξεργασία');
+    // New registration: always start completely empty.
+    if(!editing&&!form.dataset.nw215New){
       name.value='';
       if(hidden)hidden.value='';
       form.dataset.nw215New='1';
     }
+    // When the user changes the name, do not keep the old client id.
+    // The save handler will resolve the typed name again.
     if(!name.dataset.nw215Bound){
       name.dataset.nw215Bound='1';
       const clearClientId=()=>{if(hidden)hidden.value=''};
