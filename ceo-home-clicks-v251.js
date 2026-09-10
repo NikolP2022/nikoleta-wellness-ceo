@@ -15,6 +15,6 @@ const click=e=>{const t=e.target.closest?.('[data-v="clients"],[data-v="followup
 document.addEventListener('click',click,true);
 const key=e=>{if(e.key!=='Enter'&&e.key!==' ')return;const t=e.target.closest?.('.ceo-event,.ceo-motto');if(!t)return;const r=routeFor(t);if(r){e.preventDefault();go(r)}};
 document.addEventListener('keydown',key,true);
-const enhance=()=>{document.querySelectorAll('.ceo-event,.ceo-motto').forEach(x=>{x.tabIndex=0;x.setAttribute('role','button')})};
+const enhance=()=>{document.querySelectorAll('.ceo-event,.ceo-motto').forEach(x=>{x.tabIndex=0;x.setAttribute('role','button');x.style.cursor='pointer'})};
 window.addEventListener('load',enhance);new MutationObserver(enhance).observe(document.body,{childList:true,subtree:true});
 })();
