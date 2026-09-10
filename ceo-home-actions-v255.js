@@ -1,0 +1,18 @@
+(()=>{
+'use strict';
+if(window.__NWCEO255)return;window.__NWCEO255=true;
+const routes=[['📅','Ραντεβού','#appointments'],['👥','Πελάτες','#clients'],['🤝','Συνεργάτες','#partners'],['📞','Follow-ups','#followups'],['🛒','Παραγγελίες','#orders'],['📄','Έγγραφα','#documents'],['✈️','Ταξίδια','#trips'],['📚','Εκπαιδεύσεις','#nw-training'],['📦','Αποθήκη','#nw-inventory'],['📊','Reports','#nw-reports']];
+const css=document.createElement('style');css.textContent=`.nw255-link{cursor:pointer!important;pointer-events:auto!important;text-decoration:none!important}.nw255-menu{position:fixed;inset:0;z-index:2147483000;background:rgba(20,35,24,.38);display:none;padding:70px 14px 14px}.nw255-menu.open{display:block}.nw255-panel{width:min(360px,94vw);background:#fffdf8;border:1px solid #dce7d9;border-radius:22px;padding:14px;box-shadow:0 24px 80px #0007}.nw255-panel h3{margin:4px 8px 12px;color:#245b2b}.nw255-close{float:right;border:0;background:transparent;font-size:28px;cursor:pointer;color:#245b2b}.nw255-panel a{display:block;padding:14px 12px;margin:5px 0;border-radius:13px;color:#203322;font-weight:850;text-decoration:none}.nw255-panel a:hover{background:#eef6ec}.nw255-menu button{cursor:pointer}.nw255-home-action{cursor:pointer!important;pointer-events:auto!important}`;document.head.appendChild(css);
+function closeMenu(){document.getElementById('nw255-menu')?.remove()}
+function openMenu(){closeMenu();const m=document.createElement('div');m.id='nw255-menu';m.className='nw255-menu open';m.innerHTML=`<div class="nw255-panel"><button type="button" class="nw255-close" aria-label="Κλείσιμο">×</button><h3>☰ Nikoleta Wellness CEO</h3>${routes.map(x=>`<a href="${x[2]}">${x[0]} ${x[1]} <span style="float:right">→</span></a>`).join('')}</div>`;document.body.appendChild(m);m.addEventListener('click',e=>{if(e.target===m)closeMenu()});m.querySelector('.nw255-close').onclick=closeMenu;m.querySelectorAll('a').forEach(a=>a.onclick=()=>setTimeout(closeMenu,50))}
+function linkify(root){
+ if(!root)return;
+ const ham=root.querySelector('.ceo-menu-dot,#ceo-hamb');
+ if(ham&&!ham.dataset.nw255){ham.dataset.nw255='1';ham.onclick=e=>{e.preventDefault();e.stopPropagation();openMenu()};ham.onpointerup=e=>{e.preventDefault();e.stopPropagation();openMenu()};}
+ const map=[['#ceo-new-appt','#appointments'],['#ceo-empty-appt','#appointments'],['#ceo-appts','#appointments'],['[data-v="clients"]','#clients'],['[data-v="followups"]','#followups'],['.ceo-appointment','#appointments'],['.ceo-followup','#followups'],['.ceo-task','#planner'],['.ceo-motto','#planner'],['.ceo-maincard','#appointments']];
+ map.forEach(([sel,href])=>root.querySelectorAll(sel).forEach(el=>{if(el.dataset.nw255)return;el.dataset.nw255='1';el.classList.add('nw255-home-action');el.onclick=e=>{e.preventDefault();e.stopPropagation();location.hash=href};el.onpointerup=e=>{e.preventDefault();e.stopPropagation();location.hash=href};}));
+ root.querySelectorAll('.ceo-quick button').forEach(b=>{if(b.dataset.nw255)return;const s=b.textContent.toLowerCase();const href=s.includes('ραντεβού')?'#appointments':s.includes('πελάτες')?'#clients':s.includes('follow')?'#followups':null;if(!href)return;b.dataset.nw255='1';b.classList.add('nw255-home-action');b.onclick=e=>{e.preventDefault();e.stopPropagation();location.hash=href};b.onpointerup=e=>{e.preventDefault();e.stopPropagation();location.hash=href}});
+}
+function run(){const h=document.querySelector('.ceo-home');if(h)linkify(h)}
+window.addEventListener('load',()=>{run();setTimeout(run,500);setTimeout(run,1500);setTimeout(run,3000)});new MutationObserver(run).observe(document.body,{childList:true,subtree:true});
+})();
