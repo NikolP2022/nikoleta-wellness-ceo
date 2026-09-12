@@ -1,0 +1,1 @@
+(()=>{'use strict';function boot(){if(location.hash!=='#orders')return;const b=document.getElementById('newOrder');if(b&&!b.dataset.fix283){b.dataset.fix283='1';b.addEventListener('click',()=>window.dispatchEvent(new CustomEvent('nw:open-order')),true)}}window.addEventListener('hashchange',()=>setTimeout(boot,1200));setInterval(boot,1000);setTimeout(boot,1500)})();
