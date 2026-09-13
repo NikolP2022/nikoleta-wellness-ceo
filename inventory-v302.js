@@ -1,0 +1,24 @@
+(function(){
+'use strict';
+function renderInventory(){
+ const app=document.getElementById('app'); if(!app)return;
+ app.innerHTML=`<main class="inventory-page" style="max-width:1100px;margin:0 auto;padding:24px;font-family:Arial,sans-serif">
+ <div style="background:linear-gradient(135deg,#245b2b,#3f7d43);color:#fff;border-radius:24px;padding:28px;box-shadow:0 12px 35px rgba(36,91,43,.18)">
+ <div style="font-size:13px;letter-spacing:2px;opacity:.85">👑 CEO BUSINESS • PRODUCT CARE</div>
+ <h1 style="margin:8px 0 4px">📦 Αποθήκη</h1><div style="opacity:.9">Η δική σου premium εικόνα προϊόντων & αποθέματος</div>
+ </div>
+ <section style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0">
+ <div class="inv-stat"><b>📦 Προϊόντα</b><strong id="invCount">0</strong></div><div class="inv-stat"><b>🔢 Τεμάχια</b><strong id="invUnits">0</strong></div><div class="inv-stat"><b>⚠️ Χαμηλό απόθεμα</b><strong id="invLow">0</strong></div>
+ </section>
+ <section style="background:#fffdf8;border:1px solid #e8dfca;border-radius:22px;padding:20px;box-shadow:0 8px 25px rgba(0,0,0,.06)">
+ <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between"><h2 style="margin:0;color:#245b2b">Το απόθεμά μου</h2><button id="invAdd" style="border:0;border-radius:14px;padding:12px 18px;background:#245b2b;color:#fff;font-weight:700;cursor:pointer">＋ Νέο προϊόν</button></div>
+ <input id="invSearch" placeholder="🔎 Αναζήτηση προϊόντος..." style="width:100%;box-sizing:border-box;margin:16px 0;padding:14px;border:1px solid #d9d1bd;border-radius:14px;font-size:16px">
+ <div id="invList"></div></section>
+ </main>`;
+ const style=document.createElement('style');style.textContent='.inv-stat{background:#fffdf8;border:1px solid #e8dfca;border-radius:20px;padding:18px;box-shadow:0 6px 20px rgba(0,0,0,.05);color:#245b2b}.inv-stat strong{display:block;font-size:28px;margin-top:8px}.inv-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 0;border-bottom:1px solid #eee7d8}.inv-name{font-weight:800;color:#245b2b}.inv-actions button{border:1px solid #d9d1bd;background:#fff;border-radius:10px;padding:8px 11px;margin-left:5px;cursor:pointer}.inv-badge{display:inline-block;padding:5px 9px;border-radius:999px;font-size:12px;background:#eaf3e9;color:#245b2b}.inv-low{background:#fff0dc;color:#9a5a00}@media(max-width:700px){.inventory-page{padding:14px!important}.inventory-page section:nth-of-type(1){grid-template-columns:1fr!important}.inv-row{align-items:flex-start;flex-direction:column}.inv-actions button{margin:6px 4px 0 0}}';document.head.appendChild(style);
+ let items=JSON.parse(localStorage.getItem('nwceo_inventory')||'[]');
+ const save=()=>localStorage.setItem('nwceo_inventory',JSON.stringify(items));
+ function draw(){const q=(document.getElementById('invSearch').value||'').toLowerCase();let shown=items.filter(x=>x.name.toLowerCase().includes(q));document.getElementById('invCount').textContent=items.length;document.getElementById('invUnits').textContent=items.reduce((a,x)=>a+Number(x.qty||0),0);document.getElementById('invLow').textContent=items.filter(x=>Number(x.qty||0)<=Number(x.min||3)).length;document.getElementById('invList').innerHTML=shown.length?shown.map((x,i)=>`<div class="inv-row"><div><div class="inv-name">${x.name}</div><span class="inv-badge ${Number(x.qty)<=Number(x.min||3)?'inv-low':''}">${Number(x.qty)<=Number(x.min||3)?'⚠️ Χαμηλό':'✓ Διαθέσιμο'} · ${x.qty} τεμ.</span></div><div class="inv-actions"><button data-i="${items.indexOf(x)}" data-a="minus">−</button><button data-i="${items.indexOf(x)}" data-a="plus">＋</button><button data-i="${items.indexOf(x)}" data-a="edit">✏️ Επεξεργασία</button><button data-i="${items.indexOf(x)}" data-a="del">🗑️</button></div></div>`).join(''):'<div style="padding:30px;text-align:center;color:#777">Δεν υπάρχει ακόμη προϊόν στην αποθήκη.</div>';}
+ document.getElementById('invSearch').oninput=draw;document.getElementById('invAdd').onclick=()=>{let n=prompt('Όνομα προϊόντος');if(!n)return;let q=prompt('Ποσότητα','0');items.push({name:n,qty:Number(q)||0,min:3});save();draw()};document.getElementById('invList').onclick=e=>{let b=e.target.closest('button');if(!b)return;let i=+b.dataset.i,a=b.dataset.a,x=items[i];if(a==='plus')x.qty++;if(a==='minus')x.qty=Math.max(0,x.qty-1);if(a==='del'&&confirm('Να διαγραφεί το προϊόν;'))items.splice(i,1);if(a==='edit'){let n=prompt('Όνομα προϊόντος',x.name);if(n)x.name=n;let q=prompt('Ποσότητα',x.qty);if(q!==null)x.qty=Number(q)||0}save();draw()};draw();}
+window.openInventory=renderInventory;window.addEventListener('DOMContentLoaded',function(){document.addEventListener('click',function(e){let t=e.target.closest('[data-section="inventory"],a[href="#inventory"]');if(t){e.preventDefault();renderInventory()}})});
+})();
