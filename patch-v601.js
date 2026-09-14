@@ -1,0 +1,27 @@
+(()=>{'use strict';
+const URL='https://vbkuvexyqehmpeeejqbh.supabase.co',KEY='sb_publishable__nczNPWr3do_hqi6MCS0AQ_fjYCXhGk';
+const esc=x=>String(x??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const tm=x=>x?String(x).slice(0,5):'';
+let P;
+(async()=>{try{const m=await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/+esm');P=m.createClient(URL,KEY)}catch(e){return}})();
+function clock(){return new Intl.DateTimeFormat('el-GR',{timeZone:'Europe/Athens',hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(new Date())}
+function patchHome(){const v=document.getElementById('view');if(!v)return;let h=v.querySelector('.hero');if(h&&!h.querySelector('.patch-welcome')){const p=document.createElement('div');p.className='patch-welcome';p.innerHTML='<div style="font-size:14px;color:#f0d58e;letter-spacing:2px;margin-top:12px">ΚΑΛΩΣΟΡΙΣΕΣ ΣΤΟΝ ΔΙΚΟ ΣΟΥ ΧΩΡΟ</div><div id="grclock" style="font-size:28px;font-weight:900;color:#f5dc98;margin-top:5px">'+clock()+'</div><div style="font-size:12px;color:#f7ead0">Ώρα Ελλάδος · Europe/Athens</div>';h.appendChild(p)}}
+setInterval(()=>{const c=document.getElementById('grclock');if(c)c.textContent=clock()},1000);
+new MutationObserver(()=>patchHome()).observe(document.body,{childList:true,subtree:true});
+// Τα κουμπιά των καρτών στην Αρχική χρησιμοποιούν πλέον αμέσως το αντίστοιχο κουμπί του μενού — χωρίς ανανέωση.
+document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(!b)return;if(b.closest('.drawer'))return;e.preventDefault();e.stopImmediatePropagation();const target=document.querySelector('.drawer [data-go="'+b.dataset.go+'"]');if(target)target.click()},true);
+window.appointments=async function(){
+ const view=document.getElementById('view'); if(!view||!P)return;
+ const {data:{user}}=await P.auth.getUser(); if(!user)return;
+ const {data:rows,error}=await P.from('appointments').select('*').eq('user_id',user.id).order('appointment_date',{ascending:false}).order('start_time',{ascending:true});
+ if(error){view.innerHTML='<section class="page"><div class="card">Δεν ήταν δυνατή η φόρτωση των ραντεβού.</div></section>';return}
+ view.innerHTML='<section class="page"><div class="head"><div><h1>📅 Ραντεβού</h1><p>Τα ραντεβού σου, με πλήρη επεξεργασία χωρίς ανανέωση.</p></div><button class="primary" id="newAp">＋ Νέο ραντεβού</button></div><div class="list">'+((rows||[]).map(r=>'<article class="item"><b>'+esc(r.full_name||r.name||r.title||'Ραντεβού')+'</b><span class="muted">'+esc(r.appointment_date||'')+' · '+tm(r.start_time)+'–'+tm(r.end_time)+'</span><span class="muted">'+esc(r.notes||'')+'</span><div class="actions"><button class="ghost" data-ap-edit="'+r.id+'">✏️ Επεξεργασία</button><button class="danger" data-ap-del="'+r.id+'">🗑️ Διαγραφή</button><button class="gold" onclick="window.print()">📄 PDF</button></div></article>').join('')||'<div class="card">Δεν υπάρχουν ακόμη ραντεβού.</div>')+'</div></section>';
+ document.getElementById('newAp').onclick=()=>apForm({});
+ document.querySelectorAll('[data-ap-edit]').forEach(b=>b.onclick=async()=>{const r=(rows||[]).find(x=>String(x.id)===String(b.dataset.apEdit));apForm(r||{})});
+ document.querySelectorAll('[data-ap-del]').forEach(b=>b.onclick=async()=>{if(!confirm('Να διαγραφεί το ραντεβού;'))return;const q=await P.from('appointments').delete().eq('id',b.dataset.apDel).eq('user_id',user.id);if(q.error)alert(q.error.message);else window.appointments()});
+};
+async function apForm(r){
+ const m=document.createElement('div');m.className='modal';m.innerHTML='<div class="box"><div class="head"><h2>📅 '+(r.id?'Επεξεργασία ραντεβού':'Νέο ραντεβού')+'</h2><button class="x" id="ax">✕</button></div><label>Ονοματεπώνυμο<input id="apn" value="'+esc(r.full_name||r.name||'')+'"></label><label>Ημερομηνία<input id="apd" type="date" value="'+esc(r.appointment_date||new Date().toLocaleDateString('en-CA',{timeZone:'Europe/Athens'}))+'"></label><label>Ώρα έναρξης<input id="aps" type="time" value="'+esc(tm(r.start_time))+'"></label><label>Ώρα λήξης<input id="ape" type="time" value="'+esc(tm(r.end_time))+'"></label><label>Σημειώσεις<textarea id="apnots">'+esc(r.notes||'')+'</textarea></label><button class="primary" id="apsave">💾 Αποθήκευση</button></div>';document.body.appendChild(m);ax.onclick=()=>m.remove();
+ apsave.onclick=async()=>{if(!apn.value||!apd.value||!aps.value){alert('Συμπλήρωσε ονοματεπώνυμο, ημερομηνία και ώρα.');return}const end=ape.value||aps.value;const s=aps.value,e=end;if(e<=s){alert('Η ώρα λήξης πρέπει να είναι μετά την έναρξη.');return}const {data:{user}}=await P.auth.getUser();const q=await P.from('appointments').select('*').eq('user_id',user.id).eq('appointment_date',apd.value);const conflict=(q.data||[]).some(x=>String(x.id)!==String(r.id||'')&&s<tm(x.end_time)&&tm(x.start_time)<e);if(conflict){alert('⚠️ Η ώρα είναι ήδη κατειλημμένη.');return}const payload={user_id:user.id,full_name:apn.value,name:apn.value,title:apn.value,appointment_date:apd.value,start_time:s,end_time:e,notes:apnots.value};let res=r.id?await P.from('appointments').update(payload).eq('id',r.id).eq('user_id',user.id):await P.from('appointments').insert(payload);if(res.error){alert('Δεν αποθηκεύτηκε: '+res.error.message);return}m.remove();window.appointments()};
+}
+})();
