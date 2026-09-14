@@ -1,6 +1,6 @@
-const CACHE='nwceo-v601';
-const FILES=['./','./index.html','./app-v601.js?v=601','./manifest.json'];
-self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)))});
+const CACHE='nwceo-v602';
+const FILES=['./','./index.html','./app-v600.js?v=602','./overlay-v602.js?v=602','./manifest.json'];
+self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).catch(()=>{}))});
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));
 self.addEventListener('push',e=>{let d={title:'Nikoleta Wellness CEO',body:'Έχεις μια υπενθύμιση.',url:'./'};try{d={...d,...e.data?.json()}}catch(_){try{d.body=e.data?.text()||d.body}catch(__){}}e.waitUntil(self.registration.showNotification(d.title,{body:d.body,tag:d.tag||'nwceo-reminder',icon:'./icon-192.png',badge:'./icon-192.png',requireInteraction:true,renotify:true,silent:false,vibrate:[200,100,200],data:{url:d.url||'./'}}))});
 self.addEventListener('notificationclick',e=>{e.notification.close();e.waitUntil(clients.matchAll({type:'window',includeUncontrolled:true}).then(cs=>{for(const c of cs){if('focus'in c)return c.focus()}return clients.openWindow(e.notification.data?.url||'./')}))});
