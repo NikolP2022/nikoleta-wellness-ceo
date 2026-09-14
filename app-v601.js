@@ -1,0 +1,1 @@
+(()=>{const base='/nikoleta-wellness-ceo/';const s=document.createElement('script');s.src=base+'app-v600.js?bypass='+Date.now();s.onload=()=>{const go=()=>{if(window.__ceoRender)window.__ceoRender();};window.addEventListener('hashchange',go);setTimeout(go,100);};document.head.appendChild(s);})();
