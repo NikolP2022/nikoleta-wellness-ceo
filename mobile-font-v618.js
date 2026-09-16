@@ -3,37 +3,39 @@
   if(!isMobile)return;
   document.documentElement.classList.add('mobile-device');
   const css=`
-    html.mobile-device{font-size:18px!important}
-    html.mobile-device body{font-size:18px!important}
-    html.mobile-device .top{height:auto!important;min-height:70px!important;padding:12px 14px!important}
-    html.mobile-device .brand b{font-size:20px!important}
-    html.mobile-device .brand small{font-size:13px!important}
-    html.mobile-device .menu{font-size:24px!important;min-width:52px!important;min-height:50px!important;padding:10px 14px!important}
-    html.mobile-device .page{padding:14px 12px 96px!important}
-    html.mobile-device .hero{padding:20px 16px!important}
-    html.mobile-device .hero small{font-size:14px!important}
-    html.mobile-device .hero h1{font-size:28px!important;line-height:1.2!important}
-    html.mobile-device .hero p{font-size:18px!important;line-height:1.45!important}
-    html.mobile-device .grid{grid-template-columns:1fr!important;gap:12px!important}
-    html.mobile-device .card{padding:18px!important;min-height:78px!important}
-    html.mobile-device .card b{font-size:20px!important;line-height:1.3!important}
-    html.mobile-device .card small{font-size:16px!important;line-height:1.4!important}
-    html.mobile-device .item{padding:18px!important}
-    html.mobile-device .item b{font-size:20px!important;line-height:1.35!important}
-    html.mobile-device .muted{font-size:16px!important;line-height:1.45!important}
-    html.mobile-device .bar{font-size:18px!important;padding:12px 0!important}
-    html.mobile-device button,html.mobile-device .primary,html.mobile-device .gold,html.mobile-device .danger,html.mobile-device .ghost{font-size:18px!important;line-height:1.25!important;padding:13px 16px!important;min-height:50px!important}
-    html.mobile-device input,html.mobile-device select,html.mobile-device textarea{font-size:18px!important;line-height:1.35!important;padding:13px!important;min-height:50px!important}
-    html.mobile-device label{font-size:17px!important;line-height:1.35!important;margin:10px 0!important}
-    html.mobile-device textarea{min-height:110px!important}
-    html.mobile-device .drawer{font-size:18px!important;width:min(340px,88vw)!important;padding:18px!important}
-    html.mobile-device .drawer h2{font-size:23px!important}
-    html.mobile-device .drawer button{font-size:18px!important;padding:14px!important;min-height:52px!important}
-    html.mobile-device .bottom{height:74px!important}
-    html.mobile-device .bottom button{font-size:14px!important;min-height:66px!important;padding:6px!important}
-    html.mobile-device .bottom span{font-size:24px!important}
-    html.mobile-device .bottom small{font-size:12px!important}
-    html.mobile-device .box{padding:18px!important}
+    /* NIKO LETA WELLNESS CEO — EXTRA LARGE MOBILE MODE */
+    html.mobile-device{font-size:28px!important;-webkit-text-size-adjust:100%!important;text-size-adjust:100%!important}
+    html.mobile-device body{font-size:28px!important;line-height:1.5!important;font-family:Arial,sans-serif!important;-webkit-text-size-adjust:100%!important;text-size-adjust:100%!important}
+    html.mobile-device .top{height:auto!important;min-height:88px!important;padding:16px 14px!important}
+    html.mobile-device .brand b{font-size:30px!important;line-height:1.2!important}
+    html.mobile-device .brand small{font-size:19px!important;line-height:1.3!important;letter-spacing:1.5px!important}
+    html.mobile-device .menu{font-size:34px!important;min-width:68px!important;min-height:64px!important;padding:12px 16px!important}
+    html.mobile-device .page{padding:20px 14px 125px!important;max-width:none!important}
+    html.mobile-device .hero{padding:28px 20px!important;border-radius:24px!important}
+    html.mobile-device .hero small{font-size:20px!important;line-height:1.3!important}
+    html.mobile-device .hero h1{font-size:42px!important;line-height:1.18!important}
+    html.mobile-device .hero p{font-size:28px!important;line-height:1.45!important}
+    html.mobile-device .grid{grid-template-columns:1fr!important;gap:18px!important}
+    html.mobile-device .card{padding:26px!important;min-height:120px!important}
+    html.mobile-device .card b{font-size:30px!important;line-height:1.3!important}
+    html.mobile-device .card small{font-size:24px!important;line-height:1.45!important}
+    html.mobile-device .item{padding:26px!important}
+    html.mobile-device .item b{font-size:30px!important;line-height:1.35!important}
+    html.mobile-device .muted{font-size:24px!important;line-height:1.5!important}
+    html.mobile-device .bar{font-size:27px!important;padding:18px 0!important;line-height:1.35!important}
+    html.mobile-device button,html.mobile-device .primary,html.mobile-device .gold,html.mobile-device .danger,html.mobile-device .ghost{font-size:27px!important;font-weight:800!important;line-height:1.25!important;padding:18px 21px!important;min-height:68px!important}
+    html.mobile-device input,html.mobile-device select,html.mobile-device textarea{font-size:27px!important;line-height:1.35!important;padding:18px!important;min-height:68px!important}
+    html.mobile-device label{font-size:25px!important;font-weight:800!important;line-height:1.35!important;margin:16px 0!important}
+    html.mobile-device input::placeholder,html.mobile-device textarea::placeholder{font-size:24px!important}
+    html.mobile-device textarea{min-height:150px!important}
+    html.mobile-device .drawer{font-size:27px!important;width:min(400px,92vw)!important;padding:24px!important}
+    html.mobile-device .drawer h2{font-size:34px!important}
+    html.mobile-device .drawer button{font-size:27px!important;padding:19px!important;min-height:68px!important}
+    html.mobile-device .bottom{height:94px!important}
+    html.mobile-device .bottom button{font-size:18px!important;min-height:84px!important;padding:8px 5px!important}
+    html.mobile-device .bottom span{font-size:32px!important}
+    html.mobile-device .bottom small{font-size:17px!important}
+    html.mobile-device .box{padding:26px!important}
   `;
   function apply(){
     let old=document.getElementById('mobile-font-v618');
