@@ -1,23 +1,26 @@
-/* Mobile readability upgrade - extra large */
-@media (max-width:600px){
-  body{font-size:22px!important}
-  .top{padding:16px 14px!important}
-  .brand b{font-size:22px!important}
-  .brand small{font-size:15px!important}
-  .hero{padding:24px 18px!important}
-  .hero h1{font-size:34px!important;line-height:1.15!important}
-  .hero p{font-size:21px!important;line-height:1.4!important}
-  .card{padding:22px!important;margin-bottom:18px!important}
-  .card b{font-size:24px!important;line-height:1.25!important}
-  .card small{font-size:19px!important}
-  .item{padding:20px!important}
-  .item b{font-size:23px!important;line-height:1.3!important}
-  .muted{font-size:19px!important}
-  .bar{font-size:21px!important;padding:16px!important}
-  button{font-size:21px!important;padding:15px 18px!important;min-height:52px!important}
-  input,select,textarea{font-size:21px!important;padding:15px!important;min-height:52px!important}
-  label{font-size:21px!important;margin-bottom:8px!important}
-  .drawer{font-size:21px!important}
-  .drawer button{font-size:21px!important;padding:16px!important;min-height:54px!important}
-  .bottom small{font-size:15px!important}
+/* MOBILE ONLY — large readable interface. Desktop remains unchanged. */
+@media (max-width: 600px){
+  html{font-size:24px!important;-webkit-text-size-adjust:100%!important}
+  body{font-size:24px!important;line-height:1.4!important;overflow-x:hidden!important}
+  .top{padding:20px 16px!important}
+  .brand b{font-size:30px!important;line-height:1.2!important}
+  .brand small{font-size:21px!important}
+  .hero{padding:30px 20px!important}
+  .hero h1{font-size:42px!important;line-height:1.15!important}
+  .hero p{font-size:26px!important;line-height:1.4!important}
+  .card{padding:26px!important;margin-bottom:20px!important}
+  .card b{font-size:30px!important;line-height:1.25!important}
+  .card small{font-size:23px!important}
+  .item{padding:24px!important}
+  .item b{font-size:29px!important;line-height:1.3!important}
+  .muted{font-size:23px!important}
+  .bar{font-size:26px!important;padding:19px!important}
+  button{font-size:26px!important;padding:18px 20px!important;min-height:60px!important}
+  input,select,textarea{font-size:26px!important;padding:18px!important;min-height:60px!important}
+  label{font-size:25px!important;margin-bottom:10px!important}
+  .drawer{font-size:26px!important}
+  .drawer button{font-size:26px!important;padding:19px!important;min-height:62px!important}
+  .bottom small{font-size:19px!important}
+  .bottom{padding:12px 8px!important}
+  .bottom button{font-size:21px!important;min-height:56px!important}
 }
