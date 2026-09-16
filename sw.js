@@ -1,5 +1,5 @@
-const CACHE='nwceo-v632';
-const FILES=['./','./index.html','./app-v602.js?v=632','./mobile-font-v629.js?v=632','./mobile-font-v616.css?v=632','./appointment-direct-v613.js?v=632','./notification-settings-fix-v615.js?v=632','./notification-fix-v606.js?v=632','./reminder-sound-v614.js?v=632','./manifest.json'];
+const CACHE='nwceo-v633';
+const FILES=['./','./index.html','./app-v602.js?v=633','./mobile-font-v629.js?v=633','./mobile-font-v616.css?v=633','./appointment-direct-v613.js?v=633','./notification-settings-fix-v615.js?v=633','./notification-fix-v606.js?v=633','./reminder-sound-v614.js?v=633','./manifest.json'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).catch(()=>{}))});
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));
 self.addEventListener('push',e=>{let d={title:'Nikoleta Wellness CEO',body:'Έχεις μια υπενθύμιση.',url:'./'};try{d={...d,...e.data?.json()}}catch(_){try{d.body=e.data?.text()||d.body}catch(__){}}e.waitUntil(self.registration.showNotification(d.title,{body:d.body,tag:d.tag||'nwceo-reminder',icon:'./icon-192.png',badge:'./icon-192.png',requireInteraction:true,renotify:true,silent:false,vibrate:[200,100,200],data:{url:d.url||'./'}}))});
