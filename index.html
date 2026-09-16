@@ -5,46 +5,38 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
   <meta name="theme-color" content="#245b2b">
   <title>Nikoleta Wellness CEO — Wellness Touch Point</title>
-  <link rel="stylesheet" href="./mobile-font-v616.css?v=629">
+  <link rel="stylesheet" href="./mobile-font-v616.css?v=630">
 </head>
 <body>
   <div id="app"></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/dist/umd/supabase.min.js"></script>
-  <script src="./app-v602.js?v=629"></script>
-  <script src="./mobile-font-v618.js?v=629"></script>
-  <script src="./appointment-direct-v613.js?v=629"></script>
-  <script src="./notification-settings-fix-v615.js?v=629"></script>
-  <script src="./notification-fix-v606.js?v=629"></script>
-  <script src="./reminder-sound-v614.js?v=629"></script>
-  <style id="mobile-final-v629">
+  <script src="./app-v602.js?v=630"></script>
+  <script src="./mobile-font-v618.js?v=630"></script>
+  <script src="./appointment-direct-v613.js?v=630"></script>
+  <script src="./notification-settings-fix-v615.js?v=630"></script>
+  <script src="./notification-fix-v606.js?v=630"></script>
+  <script src="./reminder-sound-v614.js?v=630"></script>
+  <style id="mobile-final-v630">
     @media screen and (max-width:900px){
-      html{font-size:40px!important;-webkit-text-size-adjust:100%!important;text-size-adjust:100%!important}
-      body{font-size:40px!important;line-height:1.55!important;font-family:Arial,sans-serif!important;-webkit-text-size-adjust:100%!important;text-size-adjust:100%!important;zoom:1!important}
-      .top{padding:20px 16px!important;min-height:116px!important;height:auto!important}
-      .brand b{font-size:40px!important}.brand small{font-size:27px!important;letter-spacing:1.5px!important}
+      html,body{font-size:40px!important;-webkit-text-size-adjust:100%!important;text-size-adjust:100%!important}
+      body{line-height:1.5!important}
+      .top{min-height:116px!important;height:auto!important;padding:20px 16px!important}
+      .brand b{font-size:40px!important;line-height:1.2!important}.brand small{font-size:27px!important;line-height:1.25!important}
       .menu{font-size:46px!important;min-width:86px!important;min-height:86px!important;padding:16px 20px!important}
-      .page{padding:24px 14px 140px!important;max-width:none!important}
-      .hero{padding:36px 22px!important;border-radius:24px!important}
-      .hero h1{font-size:54px!important;line-height:1.18!important}.hero p{font-size:38px!important;line-height:1.5!important}.hero small{font-size:29px!important}
-      .grid{grid-template-columns:1fr!important;gap:22px!important}
-      .card{padding:32px!important;min-height:135px!important}.card b{font-size:42px!important;line-height:1.28!important}.card small{font-size:35px!important;line-height:1.5!important}
-      .item{padding:32px!important}.item b{font-size:41px!important;line-height:1.42!important}.muted{font-size:35px!important;line-height:1.5!important}
-      .bar{font-size:38px!important;padding:22px 0!important}
-      button,.primary,.gold,.danger,.ghost{font-size:38px!important;line-height:1.3!important;min-height:92px!important;padding:23px 26px!important}
-      input,select,textarea{font-size:38px!important;line-height:1.42!important;min-height:92px!important;padding:23px!important}
-      label{font-size:36px!important;line-height:1.42!important;margin:20px 0!important}textarea{min-height:210px!important}
-      .drawer{font-size:38px!important;width:min(450px,94vw)!important;padding:28px!important}.drawer h2{font-size:46px!important}.drawer button{font-size:38px!important;padding:24px!important;min-height:92px!important}
+      .page{padding:24px 14px 145px!important;max-width:none!important}
+      .hero{padding:36px 22px!important;border-radius:24px!important}.hero small{font-size:29px!important}.hero h1{font-size:54px!important;line-height:1.18!important}.hero p{font-size:38px!important;line-height:1.5!important}
+      .grid{grid-template-columns:1fr!important;gap:22px!important}.card{padding:32px!important;min-height:135px!important}.card b{font-size:42px!important;line-height:1.28!important}.card small{font-size:35px!important;line-height:1.5!important}
+      .item{padding:32px!important}.item b{font-size:41px!important;line-height:1.4!important}.muted{font-size:35px!important;line-height:1.5!important}
+      .bar{font-size:38px!important;line-height:1.3!important}.bar *{font-size:38px!important}
+      button,.primary,.gold,.danger,.ghost{font-size:38px!important;line-height:1.3!important;font-weight:800!important;min-height:92px!important;padding:23px 26px!important}
+      input,select,textarea{font-size:38px!important;line-height:1.4!important;min-height:92px!important;padding:23px!important}
+      input::placeholder,textarea::placeholder{font-size:32px!important}.page label{font-size:36px!important;line-height:1.4!important;margin:20px 0!important}textarea{min-height:210px!important}
+      .drawer{font-size:38px!important;width:min(450px,94vw)!important;padding:28px!important}.drawer h2{font-size:46px!important}.drawer button{font-size:38px!important;min-height:92px!important;padding:24px!important}
       .bottom{height:112px!important}.bottom button{font-size:28px!important;min-height:102px!important;padding:10px!important}.bottom span{font-size:44px!important}.bottom small{font-size:25px!important}
-      .box{padding:32px!important}
+      .box{padding:32px!important}.head h2{font-size:40px!important}.notice{font-size:35px!important;padding:24px!important}.empty{font-size:35px!important;padding:40px 20px!important}
+      .loginbox{padding:32px!important}.loginbox *{font-size:36px!important}.loginbox h1,.loginbox .hero h1{font-size:50px!important}.loginbox button{font-size:38px!important}
     }
   </style>
-  <style id="mobile-largest-v629">
-    @media screen and (max-width:900px){
-      .page p,.page span,.page div,.page li{font-size:inherit}
-      input::placeholder,textarea::placeholder{font-size:32px!important}
-      button{font-weight:800!important}
-    }
-  </style>
-  <script src="./mobile-font-v629.js?v=629"></script>
+  <script src="./mobile-font-v629.js?v=630"></script>
 </body>
 </html>
