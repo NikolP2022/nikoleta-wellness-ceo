@@ -1,23 +1,16 @@
-/* MOBILE REFRESH — typography only. Desktop remains unchanged. */
+/* MOBILE — FORCE LARGE READABLE TYPOGRAPHY. Desktop unchanged. */
 @media screen and (max-width: 900px) {
   html, body { -webkit-text-size-adjust: 100% !important; text-size-adjust: 100% !important; }
-  body { font-size: 24px !important; }
-  .brand b { font-size: 34px !important; line-height: 1.15 !important; }
-  .brand small { font-size: 20px !important; }
-  .menu { font-size: 30px !important; padding: 12px 16px !important; }
-  .hero small { font-size: 20px !important; }
-  .hero h1 { font-size: 34px !important; line-height: 1.15 !important; }
-  .hero p { font-size: 24px !important; }
-  .card b { font-size: 30px !important; }
-  .card small { font-size: 21px !important; }
-  .item b { font-size: 28px !important; }
-  .muted, .notice, .empty { font-size: 21px !important; }
-  button, .primary, .gold, .danger, .ghost, .drawer button { font-size: 24px !important; }
-  input, select, textarea { font-size: 24px !important; }
-  label { font-size: 24px !important; }
-  .drawer { font-size: 24px !important; }
-  .drawer h2 { font-size: 32px !important; }
-  .head h2 { font-size: 32px !important; }
-  .bottom span { font-size: 27px !important; }
-  .bottom small { font-size: 16px !important; }
+  #app, #app * { font-size: 28px !important; }
+  #app .brand b, #app .hero h1, #app .head h2, #app .drawer h2 { font-size: 36px !important; line-height: 1.15 !important; }
+  #app .brand small, #app .hero small, #app .card small, #app .muted, #app .notice, #app .empty { font-size: 24px !important; }
+  #app .hero p { font-size: 28px !important; }
+  #app .card b, #app .item b { font-size: 32px !important; }
+  #app button, #app .primary, #app .gold, #app .danger, #app .ghost, #app .drawer button { font-size: 28px !important; min-height: 58px !important; }
+  #app input, #app select, #app textarea { font-size: 28px !important; min-height: 58px !important; }
+  #app label { font-size: 26px !important; }
+  #app .menu { font-size: 34px !important; padding: 14px 18px !important; }
+  #app .drawer { font-size: 28px !important; }
+  #app .bottom span { font-size: 30px !important; }
+  #app .bottom small { font-size: 18px !important; }
 }
