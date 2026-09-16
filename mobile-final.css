@@ -1,32 +1,34 @@
-/* FINAL MOBILE READABILITY OVERRIDE — desktop untouched */
+/* MOBILE — EXTRA LARGE READABILITY. DESKTOP UNCHANGED. */
 @media screen and (max-width:600px){
-  html,body{font-size:28px!important;-webkit-text-size-adjust:100%!important;text-size-adjust:100%!important}
-  body{line-height:1.45!important}
-  .top{min-height:92px!important;height:auto!important;padding:22px 16px!important}
-  .brand b{font-size:34px!important;line-height:1.15!important}
-  .brand small{font-size:22px!important}
-  .menu{font-size:32px!important;min-width:64px!important;min-height:64px!important;padding:10px!important}
-  .page{padding:16px 12px 105px!important;max-width:none!important}
-  .hero{padding:32px 22px!important;border-radius:25px!important}
-  .hero small{font-size:22px!important}
-  .hero h1{font-size:44px!important;line-height:1.12!important}
-  .hero p{font-size:28px!important;line-height:1.4!important}
-  .hero small,.card small,.muted,.notice,.empty{font-size:24px!important}
-  .grid{grid-template-columns:1fr!important;gap:16px!important}
-  .card{padding:28px!important;margin-bottom:0!important}
-  .card b{font-size:32px!important;line-height:1.25!important}
-  .item{padding:26px!important}
-  .item b{font-size:31px!important;line-height:1.3!important}
-  .bar,.bar *{font-size:28px!important}
-  .bar{padding:20px!important}
-  button,.primary,.gold,.danger,.ghost,.drawer button{font-size:28px!important;line-height:1.25!important;min-height:64px!important;padding:19px 22px!important}
-  input,select,textarea{font-size:28px!important;line-height:1.3!important;min-height:64px!important;padding:19px!important}
-  label{font-size:27px!important;margin:14px 0!important}
-  .drawer{font-size:28px!important;width:min(92vw,380px)!important;padding:20px!important}
-  .drawer h2{font-size:34px!important}
-  .bottom{height:82px!important;padding:10px 6px!important}
-  .bottom button{font-size:22px!important;min-height:62px!important;padding:8px!important}
-  .bottom span{font-size:28px!important}
-  .bottom small{font-size:18px!important}
-  .head h2{font-size:32px!important}
+  html{font-size:32px!important;-webkit-text-size-adjust:none!important;text-size-adjust:none!important}
+  body{font-size:32px!important;line-height:1.45!important;overflow-x:hidden!important}
+  #app,#app *{line-height:1.35!important}
+  .top{min-height:100px!important;padding:24px 18px!important}
+  .brand b{font-size:38px!important;line-height:1.15!important}
+  .brand small{font-size:25px!important}
+  .menu{font-size:36px!important;min-width:70px!important;min-height:70px!important}
+  .page{padding:18px 14px 115px!important;max-width:none!important}
+  .hero{padding:34px 24px!important;border-radius:26px!important}
+  .hero small{font-size:25px!important}
+  .hero h1{font-size:50px!important;line-height:1.1!important}
+  .hero p{font-size:32px!important;line-height:1.4!important}
+  .card{padding:30px!important;margin-bottom:20px!important}
+  .card b{font-size:36px!important;line-height:1.2!important}
+  .card small{font-size:26px!important}
+  .item{padding:28px!important}
+  .item b{font-size:35px!important;line-height:1.25!important}
+  .muted,.notice,.empty{font-size:26px!important}
+  .bar,.bar *{font-size:30px!important}
+  .bar{padding:22px!important}
+  button,.primary,.gold,.danger,.ghost,.drawer button{font-size:30px!important;font-weight:800!important;line-height:1.25!important;min-height:70px!important;padding:20px 22px!important}
+  input,select,textarea{font-size:30px!important;line-height:1.3!important;min-height:70px!important;padding:20px!important}
+  input::placeholder,textarea::placeholder{font-size:27px!important}
+  label{font-size:29px!important;margin:16px 0!important}
+  .drawer{font-size:30px!important;width:min(94vw,420px)!important;padding:22px!important}
+  .drawer h2{font-size:38px!important}
+  .bottom{height:90px!important;padding:10px 6px!important}
+  .bottom button{font-size:23px!important;min-height:68px!important;padding:8px!important}
+  .bottom span{font-size:30px!important}
+  .bottom small{font-size:20px!important}
+  .head h2{font-size:36px!important}
 }
