@@ -1,0 +1,24 @@
+/* FINAL MOBILE OVERRIDE — typography only. Desktop untouched. */
+@media screen and (max-width:900px){
+  html,body{font-size:32px!important;-webkit-text-size-adjust:none!important;text-size-adjust:none!important}
+  #app{font-size:32px!important}
+  #app .top .brand b{font-size:38px!important}
+  #app .top .brand small{font-size:25px!important}
+  #app .menu{font-size:38px!important}
+  #app .hero h1{font-size:46px!important}
+  #app .hero small{font-size:25px!important}
+  #app .hero p{font-size:32px!important}
+  #app .card b{font-size:36px!important}
+  #app .card small{font-size:27px!important}
+  #app .item b{font-size:34px!important}
+  #app .muted,#app .notice,#app .empty{font-size:27px!important}
+  #app button,#app .primary,#app .gold,#app .danger,#app .ghost,#app .drawer button{font-size:30px!important;min-height:68px!important}
+  #app input,#app select,#app textarea{font-size:30px!important;min-height:68px!important}
+  #app label{font-size:29px!important}
+  #app .drawer{font-size:30px!important}
+  #app .drawer h2{font-size:40px!important}
+  #app .bottom button{font-size:24px!important}
+  #app .bottom span{font-size:32px!important}
+  #app .bottom small{font-size:20px!important}
+  #app .head h2{font-size:38px!important}
+}
