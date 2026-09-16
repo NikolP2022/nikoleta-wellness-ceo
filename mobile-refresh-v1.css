@@ -1,0 +1,23 @@
+/* MOBILE REFRESH — typography only. Desktop remains unchanged. */
+@media screen and (max-width: 900px) {
+  html, body { -webkit-text-size-adjust: 100% !important; text-size-adjust: 100% !important; }
+  body { font-size: 20px !important; }
+  .brand b { font-size: 30px !important; }
+  .brand small { font-size: 18px !important; }
+  .menu { font-size: 26px !important; }
+  .hero small { font-size: 18px !important; }
+  .hero h1 { font-size: 36px !important; }
+  .hero p { font-size: 22px !important; }
+  .card b { font-size: 28px !important; }
+  .card small { font-size: 19px !important; }
+  .item b { font-size: 26px !important; }
+  .muted, .notice, .empty { font-size: 19px !important; }
+  button, .primary, .gold, .danger, .ghost, .drawer button { font-size: 21px !important; }
+  input, select, textarea { font-size: 21px !important; }
+  label { font-size: 21px !important; }
+  .drawer { font-size: 21px !important; }
+  .drawer h2 { font-size: 30px !important; }
+  .head h2 { font-size: 30px !important; }
+  .bottom span { font-size: 25px !important; }
+  .bottom small { font-size: 14px !important; }
+}
