@@ -1,5 +1,5 @@
-const CACHE='nwceo-v603';
-const FILES=['./','./index.html','./app-v600.js?v=603','./overlay-v603.js?v=603','./manifest.json'];
+const CACHE='nwceo-v628';
+const FILES=['./','./index.html','./app-v602.js?v=628','./mobile-font-v618.js?v=628','./mobile-font-v616.css?v=628','./appointment-direct-v613.js?v=628','./notification-settings-fix-v615.js?v=628','./notification-fix-v606.js?v=628','./reminder-sound-v614.js?v=628','./manifest.json'];
 self.addEventListener('install',e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).catch(()=>{}))});
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(k=>Promise.all(k.filter(x=>x!==CACHE).map(x=>caches.delete(x)))).then(()=>self.clients.claim())));
 self.addEventListener('push',e=>{let d={title:'Nikoleta Wellness CEO',body:'Έχεις μια υπενθύμιση.',url:'./'};try{d={...d,...e.data?.json()}}catch(_){try{d.body=e.data?.text()||d.body}catch(__){}}e.waitUntil(self.registration.showNotification(d.title,{body:d.body,tag:d.tag||'nwceo-reminder',icon:'./icon-192.png',badge:'./icon-192.png',requireInteraction:true,renotify:true,silent:false,vibrate:[200,100,200],data:{url:d.url||'./'}}))});
