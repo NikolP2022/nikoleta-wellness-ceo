@@ -1,0 +1,99 @@
+/* NIKOLETA WELLNESS CEO — FINAL REFERENCE UI
+   Visual layer only. Does not alter data, Supabase, notifications, PDF or business logic. */
+:root{--ref-green:#2d6b45;--ref-deep:#174d32;--ref-sage:#edf3ea;--ref-cream:#faf8f1;--ref-paper:#fffefa;--ref-gold:#c6a35a;--ref-ink:#244335;--ref-line:#e5e1d6;--ref-shadow:0 8px 24px rgba(34,67,50,.09)}
+html,body{background:var(--ref-cream)!important;color:var(--ref-ink)!important}
+/* Desktop — reference 1: fixed professional navigation + spacious content */
+@media(min-width:1201px){
+ #app .drawer{display:block!important;position:fixed!important;left:0!important;top:0!important;width:190px!important;height:100vh!important;padding:18px 12px!important;background:#f7faf5!important;border-right:1px solid #e0e5dc!important;box-shadow:none!important;z-index:100!important;overflow-y:auto!important}
+ #app .drawer h2{font-size:0!important;text-align:center!important;color:var(--ref-green)!important;margin:0 0 18px!important;padding:12px 4px 22px!important;border-bottom:1px solid var(--ref-line)!important}
+ #app .drawer h2:before{content:'🌿'!important;display:block!important;font-size:30px!important;margin-bottom:5px!important}
+ #app .drawer h2:after{content:'Nikoleta\A Wellness CEO'!important;white-space:pre!important;display:block!important;font-size:18px!important;line-height:1.15!important;font-weight:800!important}
+ #app .drawer .close{display:none!important}
+ #app .drawer button{display:flex!important;align-items:center!important;width:100%!important;min-height:43px!important;margin:3px 0!important;padding:10px 11px!important;border:0!important;border-radius:10px!important;background:transparent!important;color:#557064!important;font-size:14px!important;font-weight:600!important}
+ #app .drawer button:hover,#app .drawer button:focus{background:#e6f0e6!important;color:var(--ref-green)!important}
+ #app .top{margin-left:190px!important;width:calc(100% - 190px)!important;height:82px!important;padding:10px 28px!important;background:rgba(255,254,250,.98)!important;border-bottom:1px solid var(--ref-line)!important;box-shadow:0 3px 16px rgba(34,67,50,.05)!important}
+ #app .brand small{color:#b0924e!important;font-size:10px!important;letter-spacing:2.2px!important;font-weight:800!important}
+ #app .brand b{display:block!important;margin-top:3px!important;color:var(--ref-green)!important;font-size:22px!important}
+ #app .menu{display:none!important}
+ #app .page{margin-left:190px!important;width:calc(100% - 190px)!important;max-width:none!important;padding:26px 28px 70px!important}
+ #app .hero{min-height:190px!important;border-radius:20px!important;padding:27px 34px!important;background:linear-gradient(110deg,#eef3e9 0%,#f8f7ef 58%,#e7eee5 100%)!important;color:var(--ref-green)!important;border:1px solid #e0e5d9!important;box-shadow:var(--ref-shadow)!important;overflow:hidden!important;position:relative!important}
+ #app .hero:before{content:''!important;position:absolute!important;right:-40px!important;top:-75px!important;width:310px!important;height:240px!important;border:1px solid rgba(45,107,69,.14)!important;border-radius:50%!important;background:radial-gradient(circle at 40% 45%,rgba(83,137,91,.16),transparent 60%)!important}
+ #app .hero:after{content:'🌿'!important;position:absolute!important;right:34px!important;bottom:-8px!important;font-size:74px!important;opacity:.14!important;filter:grayscale(1)!important}
+ #app .hero small{color:#a88b4d!important;font-size:12px!important;letter-spacing:2.3px!important;font-weight:800!important;position:relative!important;z-index:2!important}
+ #app .hero h1{color:var(--ref-green)!important;font-size:34px!important;margin:8px 0 12px!important;position:relative!important;z-index:2!important}
+ #app .hero p{color:#697b70!important;position:relative!important;z-index:2!important}
+ #app .bar{margin:24px 0 14px!important}
+ #app .bar h2{color:var(--ref-green)!important;font-size:27px!important;font-weight:800!important}
+ #app .grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:18px!important;margin-top:16px!important}
+ #app .card{min-height:122px!important;padding:22px 24px 20px 82px!important;border-radius:18px!important;background:var(--ref-paper)!important;border:1px solid #e5e1d7!important;box-shadow:var(--ref-shadow)!important;position:relative!important;overflow:hidden!important;display:flex!important;flex-direction:column!important;justify-content:center!important}
+ #app .card:before{content:''!important;position:absolute!important;left:22px!important;top:50%!important;transform:translateY(-50%)!important;width:46px!important;height:46px!important;border-radius:50%!important;background:linear-gradient(145deg,#e5f0e4,#c8ddc9)!important;box-shadow:inset 0 0 0 1px rgba(45,107,69,.08)!important}
+ #app .card:after{content:''!important;position:absolute!important;right:-28px!important;bottom:-30px!important;width:95px!important;height:95px!important;border:1px solid rgba(198,163,90,.23)!important;border-radius:50%!important}
+ #app .card b{font-size:20px!important;color:var(--ref-green)!important;line-height:1.15!important;position:relative!important;z-index:2!important}
+ #app .card small{font-size:13px!important;color:#849088!important;margin-top:8px!important;position:relative!important;z-index:2!important}
+ /* Replace emoji-led labels with clean reference cards and dedicated icon circles. */
+ #app .grid .card b{font-size:0!important}
+ #app .grid .card b:after{font-size:19px!important;font-weight:800!important;color:var(--ref-green)!important}
+ #app .grid .card:nth-child(1) b:after{content:'Πελάτες'}
+ #app .grid .card:nth-child(2) b:after{content:'Συνεργάτες'}
+ #app .grid .card:nth-child(3) b:after{content:'Follow-ups'}
+ #app .grid .card:nth-child(4) b:after{content:'Οικονομικά'}
+ #app .grid .card:nth-child(5) b:after{content:'Παραγγελίες'}
+ #app .grid .card:nth-child(6) b:after{content:'Έγγραφα'}
+ #app .grid .card:nth-child(7) b:after{content:'Ταξίδια'}
+ #app .grid .card:nth-child(8) b:after{content:'Εκπαιδεύσεις'}
+ #app .grid .card:nth-child(9) b:after{content:'Αποθήκη'}
+ #app .grid .card:nth-child(10) b:after{content:'Planner'}
+ #app .grid .card:nth-child(11) b:after{content:'Ραντεβού'}
+ #app .grid .card:nth-child(12) b:after{content:'Ημερολόγιο'}
+ #app .grid .card:nth-child(1):before{content:'👥'!important;font-size:21px!important;text-align:center!important;line-height:46px!important}
+ #app .grid .card:nth-child(2):before{content:'🤝'!important;font-size:20px!important;text-align:center!important;line-height:46px!important}
+ #app .grid .card:nth-child(3):before{content:'📞'!important;font-size:20px!important;text-align:center!important;line-height:46px!important}
+ #app .grid .card:nth-child(4):before{content:'€'!important;font-size:25px!important;font-weight:900!important;color:#a88235!important;text-align:center!important;line-height:46px!important}
+ #app .grid .card:nth-child(5):before{content:'🛒'!important;font-size:20px!important;text-align:center!important;line-height:46px!important}
+ #app .grid .card:nth-child(6):before{content:'📄'!important;font-size:20px!important;text-align:center!important;line-height:46px!important}
+ #app .grid .card:nth-child(7):before{content:'✈️'!important;font-size:20px!important;text-align:center!important;line-height:46px!important}
+ #app .grid .card:nth-child(8):before{content:'🎓'!important;font-size:20px!important;text-align:center!important;line-height:46px!important}
+ #app .grid .card:nth-child(9):before{content:'📦'!important;font-size:20px!important;text-align:center!important;line-height:46px!important}
+ #app .grid .card:nth-child(10):before{content:'✓'!important;font-size:26px!important;font-weight:900!important;color:var(--ref-green)!important;text-align:center!important;line-height:46px!important}
+ #app .grid .card:nth-child(11):before{content:'📅'!important;font-size:20px!important;text-align:center!important;line-height:46px!important}
+ #app .grid .card:nth-child(12):before{content:'🗓️'!important;font-size:20px!important;text-align:center!important;line-height:46px!important}
+ #app .list{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important}
+ #app .item{border-radius:16px!important;background:var(--ref-paper)!important;border:1px solid #e5e1d7!important;box-shadow:var(--ref-shadow)!important}
+ #app .item b{color:var(--ref-green)!important}
+ #app .notice{background:#eef4eb!important;border:1px solid #dce7da!important;border-radius:12px!important;color:#53685b!important}
+ #app .bottom{display:none!important}
+}
+/* Mobile — reference 2: clean two-column folder dashboard */
+@media(max-width:1200px){
+ #app .top{height:72px!important;background:#fffefa!important;border-bottom:1px solid var(--ref-line)!important;padding:9px 14px!important}
+ #app .brand small{font-size:9px!important;letter-spacing:2px!important;color:#a88b4d!important}
+ #app .brand b{font-size:18px!important;color:var(--ref-green)!important}
+ #app .menu{background:#17613a!important;border-radius:13px!important;padding:10px 14px!important;box-shadow:none!important}
+ #app .page{width:100%!important;max-width:none!important;margin:0!important;padding:15px 12px 92px!important}
+ #app .hero{width:100%!important;min-height:150px!important;border-radius:21px!important;padding:22px!important;background:linear-gradient(135deg,#174d32,#2f7048)!important;box-shadow:0 8px 22px rgba(23,77,50,.16)!important}
+ #app .hero h1{font-size:27px!important;color:#fff!important;margin:7px 0!important}
+ #app .hero small{font-size:10px!important;color:#ead79f!important;letter-spacing:2px!important}
+ #app .hero p{font-size:13px!important;color:rgba(255,255,255,.84)!important}
+ #app .bar{margin:20px 0 13px!important}
+ #app .bar h2{font-size:22px!important;color:var(--ref-green)!important}
+ #app .grid{width:100%!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:11px!important;margin-top:13px!important}
+ #app .card{width:100%!important;min-height:104px!important;padding:16px 12px 14px 48px!important;border-radius:17px!important;background:#fffefa!important;border:1px solid #e5e1d7!important;box-shadow:0 5px 16px rgba(34,67,50,.08)!important}
+ #app .card:before{left:12px!important;width:27px!important;height:27px!important;line-height:27px!important;font-size:14px!important}
+ #app .card b{font-size:0!important}
+ #app .card b:after{font-size:15px!important;color:var(--ref-green)!important;font-weight:800!important}
+ #app .card small{font-size:10px!important;color:#879189!important;margin-top:6px!important}
+ #app .card:after{width:62px!important;height:62px!important;right:-22px!important;bottom:-23px!important}
+ #app .notice{font-size:11px!important;padding:10px 12px!important}
+ #app .list{grid-template-columns:1fr!important}
+ #app .bottom{display:flex!important;height:68px!important;background:rgba(255,255,252,.98)!important;border-top:1px solid #e1e3dc!important;box-shadow:0 -3px 15px rgba(34,67,50,.05)!important}
+ #app .bottom button{color:var(--ref-green)!important}
+}
+@media(max-width:600px){
+ #app .hero{min-height:148px!important;padding:20px!important}
+ #app .hero h1{font-size:24px!important}
+ #app .grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+ #app .card{min-height:98px!important;padding:14px 10px 12px 44px!important}
+ #app .card:before{left:10px!important;width:26px!important;height:26px!important;line-height:26px!important}
+ #app .card b:after{font-size:14px!important}
+}
+@media print{#app .drawer,#app .top,#app .bottom,#app .bar{display:none!important}#app .page{margin:0!important;width:100%!important}}
