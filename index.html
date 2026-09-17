@@ -22,13 +22,22 @@
   <link rel="stylesheet" href="./mobile-final-v708.css?v=710">
   <link rel="stylesheet" href="./reference-ui-v4.css?v=731">
   <link rel="stylesheet" href="./reference-ui-v5.css?v=900">
+  <link rel="stylesheet" href="./mobile-time-v1.css?v=1001">
   <style>
     @media screen and (max-width:1200px){html,body{width:100%!important;min-width:0!important;max-width:100%!important;overflow-x:hidden!important;margin:0!important;padding:0!important}#app{width:100%!important;min-width:0!important;max-width:100%!important;margin:0!important;padding:0!important;overflow-x:hidden!important;zoom:1!important}.drawer{left:-110vw!important;right:auto!important;transform:none!important;visibility:hidden!important;pointer-events:none!important}.drawer.open{left:0!important;visibility:visible!important;pointer-events:auto!important}}
     #greece-clock{font-family:Arial,sans-serif;display:flex;align-items:center;gap:6px;white-space:nowrap;font-size:18px;font-weight:700;color:#245b2b}@media(max-width:600px){#greece-clock{font-size:15px!important}}
     .modal input[type=time],#appt613 input[type=time]{font-variant-numeric:tabular-nums;font-size:22px!important;font-weight:800!important;letter-spacing:1px!important}
   </style>
   <script>
-  (()=>{'use strict';const TZ='Europe/Athens';function getTime(){return new Intl.DateTimeFormat('el-GR',{timeZone:TZ,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(new Date())}function update(){const top=document.querySelector('.top');if(!top)return;let el=document.getElementById('greece-clock');if(!el){el=document.createElement('div');el.id='greece-clock';el.setAttribute('aria-label','Ώρα Ελλάδας');const menu=top.querySelector('.menu');if(menu)top.insertBefore(el,menu);else top.appendChild(el)}el.textContent='🇬🇷 Ώρα Ελλάδας  '+getTime()}function removeHomeEmail(){const page=document.querySelector('.page');if(!page)return;const re=/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/ig;const walker=document.createTreeWalker(page,NodeFilter.SHOW_TEXT);const nodes=[];let n;while((n=walker.nextNode())){if(n.parentElement&&!['INPUT','TEXTAREA'].includes(n.parentElement.tagName)&&re.test(n.nodeValue))nodes.push(n);re.lastIndex=0}nodes.forEach(n=>{n.nodeValue=n.nodeValue.replace(re,'').replace(/\s{2,}/g,' ').trim();re.lastIndex=0})}setTimeout(()=>{update();removeHomeEmail()},700);setInterval(update,1000);setInterval(removeHomeEmail,3000)})();
+  (()=>{'use strict';const TZ='Europe/Athens';
+    function getTime(){return new Intl.DateTimeFormat('el-GR',{timeZone:TZ,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(new Date())}
+    function update(){const top=document.querySelector('.top');if(!top)return;let el=document.getElementById('greece-clock');if(!el){el=document.createElement('div');el.id='greece-clock';el.setAttribute('aria-label','Ώρα Ελλάδας');const menu=top.querySelector('.menu');if(menu)top.insertBefore(el,menu);else top.appendChild(el)}el.textContent='🇬🇷 Ώρα Ελλάδας  '+getTime()}
+    function removeHomeEmail(){const page=document.querySelector('.page');if(!page)return;const re=/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/ig;const walker=document.createTreeWalker(page,NodeFilter.SHOW_TEXT);const nodes=[];let n;while((n=walker.nextNode())){if(n.parentElement&&!['INPUT','TEXTAREA'].includes(n.parentElement.tagName)&&re.test(n.nodeValue))nodes.push(n);re.lastIndex=0}nodes.forEach(n=>{n.nodeValue=n.nodeValue.replace(re,'').replace(/\s{2,}/g,' ').trim();re.lastIndex=0})}
+    /* Every time field uses a 24-hour browser clock locale. This covers appointments, planner and all reminder time fields, including dynamically-created modals. */
+    function enforce24HourTimeFields(){document.querySelectorAll('input[type="time"]').forEach(el=>{el.setAttribute('lang','en-GB');el.setAttribute('inputmode','numeric');if(!el.getAttribute('step'))el.setAttribute('step','60');});}
+    setTimeout(()=>{update();removeHomeEmail();enforce24HourTimeFields()},700);
+    setInterval(update,1000);setInterval(removeHomeEmail,3000);setInterval(enforce24HourTimeFields,500);
+  })();
   </script>
   <script src="./daily-program-v1.js?v=1000"></script>
   <script src="./home-schedule-v1.js?v=1001"></script>
