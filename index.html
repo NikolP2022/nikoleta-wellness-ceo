@@ -12,24 +12,19 @@
 <body>
   <div id="app"></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/dist/umd/supabase.min.js"></script>
-  <script src="./app-v602.js?v=722"></script>
-  <script src="./appointment-direct-v613.js?v=722"></script>
-  <script src="./appointment-mobile-fix-v711.js?v=722"></script>
-  <script src="./time-24h-fix-v714.js?v=722"></script>
-  <script src="./appointment-persistence-v715.js?v=722"></script>
-  <script src="./notification-settings-fix-v615.js?v=722"></script>
-  <script src="./notification-fix-v606.js?v=722"></script>
-  <script src="./reminder-sound-v614.js?v=722"></script>
-  <!-- ΜΟΝΟ ΕΝΑ script διαχειρίζεται πλέον τη φόρμα Υπενθύμισης -->
-  <script src="./reminder-one-clock-v721.js?v=722"></script>
-  <link rel="stylesheet" href="./mobile-refresh-v1.css?v=722">
-  <link rel="stylesheet" href="./mobile-final-v708.css?v=722">
+  <script src="./app-v602.js?v=723"></script>
+  <script src="./appointment-direct-v613.js?v=723"></script>
+  <script src="./notification-fix-v606.js?v=723"></script>
+  <script src="./reminder-sound-v614.js?v=723"></script>
+  <link rel="stylesheet" href="./mobile-refresh-v1.css?v=723">
+  <link rel="stylesheet" href="./mobile-final-v708.css?v=723">
   <style>
-    @media screen and (max-width:1200px){html,body{width:100%!important;min-width:0!important;max-width:100%!important;overflow-x:hidden!important;margin:0!important;padding:0!important}#app{width:100%!important;min-width:0!important;max-width:100%!important;margin:0!important;padding:0!important;overflow-x:hidden!important;zoom:1!important}#app .drawer{left:-110vw!important;right:auto!important;transform:none!important;visibility:hidden!important;pointer-events:none!important}#app .drawer.open{left:0!important;visibility:visible!important;pointer-events:auto!important}}
+    @media screen and (max-width:1200px){html,body{width:100%!important;min-width:0!important;max-width:100%!important;overflow-x:hidden!important;margin:0!important;padding:0!important}#app{width:100%!important;min-width:0!important;max-width:100%!important;margin:0!important;padding:0!important;overflow-x:hidden!important;zoom:1!important}.drawer{left:-110vw!important;right:auto!important;transform:none!important;visibility:hidden!important;pointer-events:none!important}.drawer.open{left:0!important;visibility:visible!important;pointer-events:auto!important}}
     #greece-clock{font-family:Arial,sans-serif;display:flex;align-items:center;gap:6px;white-space:nowrap;font-size:18px;font-weight:700;color:#245b2b}@media(max-width:600px){#greece-clock{font-size:17px!important}}
+    .modal input[type=time],#appt613 input[type=time]{font-variant-numeric:tabular-nums;font-size:22px!important;font-weight:800!important;letter-spacing:1px!important}
   </style>
   <script>
-  (()=>{'use strict';const TZ='Europe/Athens';function getTime(){return new Intl.DateTimeFormat('el-GR',{timeZone:TZ,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(new Date())}function update(){const top=document.querySelector('.top');if(!top)return;let el=document.getElementById('greece-clock');if(!el){el=document.createElement('div');el.id='greece-clock';el.setAttribute('aria-label','Ώρα Ελλάδας');const menu=top.querySelector('.menu');if(menu)top.insertBefore(el,menu);else top.appendChild(el)}el.textContent='🇬🇷 Ώρα Ελλάδας  '+getTime()}function removeHomeEmail(){const page=document.querySelector('.page');if(!page)return;const re=/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/ig;const walker=document.createTreeWalker(page,NodeFilter.SHOW_TEXT);const nodes=[];let n;while((n=walker.nextNode())){if(n.parentElement&&!['INPUT','TEXTAREA'].includes(n.parentElement.tagName)&&re.test(n.nodeValue))nodes.push(n);re.lastIndex=0}nodes.forEach(n=>{n.nodeValue=n.nodeValue.replace(re,'').replace(/\s{2,}/g,' ').trim();re.lastIndex=0})}function run(){update();removeHomeEmail()}setTimeout(run,1000);setTimeout(run,2500);setInterval(update,1000);setInterval(removeHomeEmail,3000)})();
+  (()=>{'use strict';const TZ='Europe/Athens';function getTime(){return new Intl.DateTimeFormat('el-GR',{timeZone:TZ,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(new Date())}function update(){const top=document.querySelector('.top');if(!top)return;let el=document.getElementById('greece-clock');if(!el){el=document.createElement('div');el.id='greece-clock';el.setAttribute('aria-label','Ώρα Ελλάδας');const menu=top.querySelector('.menu');if(menu)top.insertBefore(el,menu);else top.appendChild(el)}el.textContent='🇬🇷 Ώρα Ελλάδας  '+getTime()}function removeHomeEmail(){const page=document.querySelector('.page');if(!page)return;const re=/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/ig;const walker=document.createTreeWalker(page,NodeFilter.SHOW_TEXT);const nodes=[];let n;while((n=walker.nextNode())){if(n.parentElement&&!['INPUT','TEXTAREA'].includes(n.parentElement.tagName)&&re.test(n.nodeValue))nodes.push(n);re.lastIndex=0}nodes.forEach(n=>{n.nodeValue=n.nodeValue.replace(re,'').replace(/\s{2,}/g,' ').trim();re.lastIndex=0})}setTimeout(()=>{update();removeHomeEmail()},700);setInterval(update,1000);setInterval(removeHomeEmail,3000)})();
   </script>
 </body>
 </html>
