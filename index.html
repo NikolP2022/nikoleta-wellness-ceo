@@ -30,5 +30,6 @@
   <script>
   (()=>{'use strict';const TZ='Europe/Athens';function getTime(){return new Intl.DateTimeFormat('el-GR',{timeZone:TZ,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(new Date())}function update(){const top=document.querySelector('.top');if(!top)return;let el=document.getElementById('greece-clock');if(!el){el=document.createElement('div');el.id='greece-clock';el.setAttribute('aria-label','Ώρα Ελλάδας');const menu=top.querySelector('.menu');if(menu)top.insertBefore(el,menu);else top.appendChild(el)}el.textContent='🇬🇷 Ώρα Ελλάδας  '+getTime()}function removeHomeEmail(){const page=document.querySelector('.page');if(!page)return;const re=/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/ig;const walker=document.createTreeWalker(page,NodeFilter.SHOW_TEXT);const nodes=[];let n;while((n=walker.nextNode())){if(n.parentElement&&!['INPUT','TEXTAREA'].includes(n.parentElement.tagName)&&re.test(n.nodeValue))nodes.push(n);re.lastIndex=0}nodes.forEach(n=>{n.nodeValue=n.nodeValue.replace(re,'').replace(/\s{2,}/g,' ').trim();re.lastIndex=0})}setTimeout(()=>{update();removeHomeEmail()},700);setInterval(update,1000);setInterval(removeHomeEmail,3000)})();
   </script>
+  <script src="./daily-program-v1.js?v=1000"></script>
 </body>
 </html>
