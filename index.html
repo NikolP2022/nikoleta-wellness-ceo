@@ -12,12 +12,12 @@
 <body>
   <div id="app"></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/dist/umd/supabase.min.js"></script>
-  <script src="./app-v602.js?v=709"></script>
-  <script src="./appointment-direct-v613.js?v=709"></script>
-  <script src="./notification-settings-fix-v615.js?v=709"></script>
-  <script src="./notification-fix-v606.js?v=709"></script>
-  <script src="./reminder-sound-v614.js?v=709"></script>
-  <link rel="stylesheet" href="./mobile-refresh-v1.css?v=709">
+  <script src="./app-v602.js?v=710"></script>
+  <script src="./appointment-direct-v613.js?v=710"></script>
+  <script src="./notification-settings-fix-v615.js?v=710"></script>
+  <script src="./notification-fix-v606.js?v=710"></script>
+  <script src="./reminder-sound-v614.js?v=710"></script>
+  <link rel="stylesheet" href="./mobile-refresh-v1.css?v=710">
   <style>
   @media screen and (max-width:1200px){
     html,body{width:100%!important;min-width:0!important;max-width:100%!important;overflow-x:hidden!important;margin:0!important;padding:0!important}
@@ -25,31 +25,49 @@
     #app .drawer{left:-110vw!important;right:auto!important;transform:none!important;visibility:hidden!important;pointer-events:none!important}
     #app .drawer.open{left:0!important;visibility:visible!important;pointer-events:auto!important}
   }
+  #greece-clock{font-family:Arial,sans-serif;display:flex;align-items:center;gap:5px;white-space:nowrap;font-size:18px}
+  @media(max-width:600px){#greece-clock{font-size:15px!important}}
   </style>
-  <link rel="stylesheet" href="./mobile-final-v708.css?v=709">
-  <style>
-    #greece-clock{font-family:Arial,sans-serif;display:flex;align-items:center;gap:5px}
-    @media(max-width:600px){#greece-clock{font-size:15px!important}#greece-clock span{display:none}}
-  </style>
+  <link rel="stylesheet" href="./mobile-final-v708.css?v=710">
   <script>
   (()=>{'use strict';
     const TZ='Europe/Athens';
     const greekTime=()=>new Intl.DateTimeFormat('el-GR',{timeZone:TZ,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(new Date());
-    function hideHomeEmail(){
-      const email=window.__appUserEmail||''; if(!email)return;
-      const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT); const nodes=[]; let n;
-      while(n=walker.nextNode()) if(n.nodeValue&&n.nodeValue.trim().toLowerCase()===email.toLowerCase()) nodes.push(n);
-      nodes.forEach(t=>{const el=t.parentElement;if(el&&!['INPUT','TEXTAREA'].includes(el.tagName))el.style.display='none'});
-    }
-    function update(){
-      try{if(window.user&&window.user.email)window.__appUserEmail=window.user.email}catch(e){}
-      const top=document.querySelector('.top'); if(!top)return;
+    function updateClock(){
+      const top=document.querySelector('.top');
+      if(!top)return;
       let el=document.getElementById('greece-clock');
-      if(!el){el=document.createElement('div');el.id='greece-clock';el.setAttribute('aria-label','Ώρα Ελλάδας');const menu=top.querySelector('.menu');top.insertBefore(el,menu||null)}
-      el.innerHTML='🇬🇷 <span>Ώρα Ελλάδας</span> <b>'+greekTime()+'</b>';
-      hideHomeEmail();
+      if(!el){
+        el=document.createElement('div');
+        el.id='greece-clock';
+        el.setAttribute('aria-label','Ώρα Ελλάδας');
+        const menu=top.querySelector('.menu');
+        top.insertBefore(el,menu||null);
+      }
+      const time=greekTime();
+      const b=el.querySelector('b');
+      if(b)b.textContent=time;
+      else el.innerHTML='🇬🇷 <span>Ώρα Ελλάδας</span> <b>'+time+'</b>';
     }
-    setInterval(update,1000); new MutationObserver(update).observe(document.body,{subtree:true,childList:true}); setTimeout(update,300); setTimeout(update,1200);
+    function hideHomeEmail(){
+      const page=document.querySelector('.page');
+      if(!page)return;
+      const re=/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/ig;
+      const walker=document.createTreeWalker(page,NodeFilter.SHOW_TEXT);
+      const nodes=[];let n;
+      while(n=walker.nextNode()){
+        const p=n.parentElement;
+        if(p&&p.tagName!=='INPUT'&&p.tagName!=='TEXTAREA'&&re.test(n.nodeValue)){nodes.push(n);re.lastIndex=0;}
+        re.lastIndex=0;
+      }
+      nodes.forEach(t=>{t.nodeValue=t.nodeValue.replace(re,'').replace(/\s{2,}/g,' ').trim();re.lastIndex=0;});
+    }
+    function refresh(){updateClock();hideHomeEmail();}
+    setInterval(updateClock,1000);
+    setInterval(hideHomeEmail,1500);
+    setTimeout(refresh,300);
+    setTimeout(refresh,1200);
+    setTimeout(refresh,2500);
   })();
   </script>
 </body>
