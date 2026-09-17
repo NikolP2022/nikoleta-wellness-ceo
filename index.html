@@ -12,18 +12,18 @@
 <body>
   <div id="app"></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/dist/umd/supabase.min.js"></script>
-  <script src="./app-v602.js?v=706"></script>
-  <script src="./appointment-direct-v613.js?v=706"></script>
-  <script src="./notification-settings-fix-v615.js?v=706"></script>
-  <script src="./notification-fix-v606.js?v=706"></script>
-  <script src="./reminder-sound-v614.js?v=706"></script>
-  <link rel="stylesheet" href="./mobile-refresh-v1.css?v=706">
+  <script src="./app-v602.js?v=707"></script>
+  <script src="./appointment-direct-v613.js?v=707"></script>
+  <script src="./notification-settings-fix-v615.js?v=707"></script>
+  <script src="./notification-fix-v606.js?v=707"></script>
+  <script src="./reminder-sound-v614.js?v=707"></script>
+  <link rel="stylesheet" href="./mobile-refresh-v1.css?v=707">
   <style>
-  /* MOBILE TYPOGRAPHY v706 — large but comfortable */
+  /* MOBILE WIDTH FIX v707 — full phone width, no right-side gap */
   @media screen and (max-width:1200px){
-    html,body{overflow-x:hidden!important;-webkit-text-size-adjust:none!important;text-size-adjust:none!important}
-    #app{font-size:44px!important;overflow-x:hidden!important;zoom:1.15!important;width:86.9565%!important}
-    #app *{line-height:1.22!important}
+    html,body{width:100%!important;max-width:100%!important;overflow-x:hidden!important;-webkit-text-size-adjust:none!important;text-size-adjust:none!important;margin:0!important;padding:0!important}
+    #app{width:100%!important;max-width:100%!important;box-sizing:border-box!important;overflow-x:hidden!important;zoom:1!important;font-size:50px!important;margin:0!important}
+    #app *{box-sizing:border-box!important;line-height:1.22!important}
     #app .brand small{font-size:27px!important}
     #app .brand b{font-size:38px!important}
     #app .menu{font-size:44px!important;min-width:72px!important;min-height:72px!important}
@@ -32,7 +32,7 @@
     #app .hero small{font-size:29px!important}
     #app .bar h2{font-size:46px!important}
     #app .bar button{font-size:34px!important;min-height:82px!important}
-    #app .grid{grid-template-columns:1fr!important;gap:20px!important}
+    #app .grid{grid-template-columns:1fr!important;gap:20px!important;width:100%!important}
     #app .card{padding:26px 24px!important;min-height:145px!important}
     #app .card b{font-size:38px!important}
     #app .card small{font-size:30px!important}
