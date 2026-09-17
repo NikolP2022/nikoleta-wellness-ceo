@@ -12,11 +12,38 @@
 <body>
   <div id="app"></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/dist/umd/supabase.min.js"></script>
-  <script src="./app-v602.js?v=703"></script>
-  <script src="./appointment-direct-v613.js?v=703"></script>
-  <script src="./notification-settings-fix-v615.js?v=703"></script>
-  <script src="./notification-fix-v606.js?v=703"></script>
-  <script src="./reminder-sound-v614.js?v=703"></script>
-  <link rel="stylesheet" href="./mobile-refresh-v1.css?v=703">
+  <script src="./app-v602.js?v=704"></script>
+  <script src="./appointment-direct-v613.js?v=704"></script>
+  <script src="./notification-settings-fix-v615.js?v=704"></script>
+  <script src="./notification-fix-v606.js?v=704"></script>
+  <script src="./reminder-sound-v614.js?v=704"></script>
+  <link rel="stylesheet" href="./mobile-refresh-v1.css?v=704">
+  <style>
+  /* FINAL PHONE OVERRIDE — intentionally large and cannot be overridden by app CSS */
+  @media screen and (max-width:1200px){
+    html,body{overflow-x:hidden!important;-webkit-text-size-adjust:100%!important;text-size-adjust:100%!important}
+    #app{font-size:46px!important;overflow-x:hidden!important}
+    #app .brand small{font-size:27px!important}
+    #app .brand b{font-size:38px!important}
+    #app .menu{font-size:50px!important;min-width:76px!important;min-height:76px!important}
+    #app .hero h1{font-size:58px!important}
+    #app .hero p{font-size:38px!important}
+    #app .hero small{font-size:27px!important}
+    #app .bar h2{font-size:48px!important}
+    #app .bar button{font-size:36px!important;min-height:82px!important}
+    #app .grid{grid-template-columns:1fr!important;gap:20px!important}
+    #app .card{padding:28px 24px!important;min-height:140px!important}
+    #app .card b{font-size:40px!important}
+    #app .card small{font-size:30px!important}
+    #app .notice{font-size:32px!important}
+    #app button,#app .primary,#app .gold,#app .danger,#app .ghost{font-size:36px!important;min-height:82px!important}
+    #app input,#app select,#app textarea{font-size:36px!important;min-height:82px!important}
+    #app label{font-size:34px!important}
+    #app .muted{font-size:30px!important}
+    #app .item b{font-size:42px!important}
+    #app .drawer{left:-120vw!important;transform:none!important;visibility:hidden!important;pointer-events:none!important}
+    #app .drawer.open{left:0!important;visibility:visible!important;pointer-events:auto!important}
+  }
+  </style>
 </body>
 </html>
