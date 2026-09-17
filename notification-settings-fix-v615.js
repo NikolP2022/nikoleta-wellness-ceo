@@ -1,10 +1,11 @@
 (()=>{'use strict';
 const KEY='nikoleta_notification_settings_v615';
 const read=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch{return{}}};
-const save=()=>{const root=document.querySelector('.modal:last-of-type')||document.body;const times=[...root.querySelectorAll('input[type="time"]')].filter(x=>x.offsetParent!==null);const nums=[...root.querySelectorAll('input[type="number"]')].filter(x=>x.offsetParent!==null);const data={};if(times[0])data.time=times[0].value;if(nums[0])data.minutes=nums[0].value;try{localStorage.setItem(KEY,JSON.stringify(data))}catch{}return data};
-const restore=()=>{const d=read();if(!d.time&&!d.minutes)return;const root=document.querySelector('.modal:last-of-type')||document.body;const times=[...root.querySelectorAll('input[type="time"]')].filter(x=>x.offsetParent!==null);const nums=[...root.querySelectorAll('input[type="number"]')].filter(x=>x.offsetParent!==null);if(times[0]&&d.time)times[0].value=d.time;if(nums[0]&&d.minutes!=='')nums[0].value=d.minutes;};
+const root=()=>{const ms=[...document.querySelectorAll('.modal,#appt613')].filter(x=>x.offsetParent!==null);return ms.reverse().find(x=>{const t=(x.textContent||'').toLowerCase();return t.includes('ενεργοποίηση ειδοποιήσεων')||t.includes('αποθήκευση υπενθύμισης')||t.includes('υπενθύμιση')&&t.includes('ειδοποιήσεων')})||null};
+const save=()=>{const r=root();if(!r)return{};const times=[...r.querySelectorAll('input[type="time"]')].filter(x=>x.offsetParent!==null);const nums=[...r.querySelectorAll('input[type="number"]')].filter(x=>x.offsetParent!==null);const data={};if(times[0])data.time=times[0].value;if(nums[0])data.minutes=nums[0].value;try{localStorage.setItem(KEY,JSON.stringify(data))}catch{}return data};
+const restore=()=>{const r=root();if(!r)return;const d=read();if(!d.time&&!d.minutes)return;const times=[...r.querySelectorAll('input[type="time"]')].filter(x=>x.offsetParent!==null);const nums=[...r.querySelectorAll('input[type="number"]')].filter(x=>x.offsetParent!==null);if(times[0]&&d.time)times[0].value=d.time;if(nums[0]&&d.minutes!=='')nums[0].value=d.minutes};
 const isNotify=el=>{if(!el)return false;const id=(el.id||'').toLowerCase();const txt=(el.textContent||'').toLowerCase();return id==='notif'||id==='enabler'||txt.includes('ενεργοποίηση ειδοποιήσεων')||txt.includes('ειδοποιήσεις στη συσκευή')};
-document.addEventListener('click',e=>{const el=e.target?.closest?.('button,a,[role="button"]');if(isNotify(el)){save();setTimeout(restore,80);setTimeout(restore,350)}} ,true);
-new MutationObserver(()=>{restore()}).observe(document.documentElement,{subtree:true,childList:true});
+document.addEventListener('click',e=>{const el=e.target?.closest?.('button,a,[role="button"]');if(isNotify(el)){save();setTimeout(restore,80);setTimeout(restore,350)}},true);
+new MutationObserver(()=>{if(root())restore()}).observe(document.documentElement,{subtree:true,childList:true});
 setTimeout(restore,500);
 })();
