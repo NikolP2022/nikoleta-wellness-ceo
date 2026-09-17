@@ -1,47 +1,35 @@
-/* MOBILE — LARGE READABLE TYPOGRAPHY. Works even when Chrome is using "Desktop site" on a phone. */
+/* MOBILE FINAL — large typography + drawer that is truly off-screen when closed */
 @media screen and (pointer: coarse) and (max-width: 1200px) {
-  html, body { -webkit-text-size-adjust: 100% !important; text-size-adjust: 100% !important; }
-  #app { font-size: 26px !important; }
-  #app * { font-size: inherit; }
-
-  #app .top { min-height: 78px !important; padding: 12px 16px !important; }
-  #app .brand b { font-size: 20px !important; }
-  #app .brand small { font-size: 15px !important; }
-  #app .menu { font-size: 30px !important; min-height: 56px !important; padding: 8px 14px !important; }
-
-  #app .page { padding: 16px 14px 100px !important; }
-  #app .hero { padding: 26px !important; border-radius: 25px !important; }
-  #app .hero small { font-size: 16px !important; }
-  #app .hero h1 { font-size: 34px !important; line-height: 1.15 !important; }
-  #app .hero p { font-size: 23px !important; line-height: 1.35 !important; }
-
-  #app .bar h2 { font-size: 28px !important; }
-  #app .bar button { font-size: 22px !important; min-height: 56px !important; }
-
-  /* Two roomy columns on a phone instead of tiny four-column cards. */
-  #app .grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 14px !important; }
-  #app .card { padding: 18px 14px !important; min-height: 88px !important; }
-  #app .card b { font-size: 23px !important; line-height: 1.2 !important; }
-  #app .card small { font-size: 18px !important; line-height: 1.25 !important; margin-top: 8px !important; }
-
-  #app .notice { font-size: 20px !important; line-height: 1.35 !important; padding: 14px !important; }
-  #app .item b { font-size: 25px !important; }
-  #app .muted { font-size: 19px !important; }
-
-  #app button, #app .primary, #app .gold, #app .danger, #app .ghost,
-  #app .drawer button { font-size: 22px !important; min-height: 56px !important; }
-  #app input, #app select, #app textarea { font-size: 22px !important; min-height: 56px !important; }
-  #app label { font-size: 21px !important; }
-
-  #app .drawer { width: min(92vw, 390px) !important; font-size: 24px !important; }
-  #app .drawer h2 { font-size: 30px !important; }
-  #app .bottom { height: 76px !important; }
-  #app .bottom span { font-size: 27px !important; }
-  #app .bottom small { font-size: 16px !important; }
-
-  #app .box h2 { font-size: 27px !important; }
+  html,body{ -webkit-text-size-adjust:100%!important; text-size-adjust:100%!important; }
+  #app{font-size:32px!important}
+  #app .top{min-height:86px!important;padding:14px 16px!important}
+  #app .brand small{font-size:18px!important}
+  #app .brand b{font-size:25px!important}
+  #app .menu{font-size:34px!important;min-height:62px!important;padding:8px 15px!important}
+  #app .page{padding:18px 14px 110px!important}
+  #app .hero{padding:30px!important;border-radius:26px!important}
+  #app .hero small{font-size:19px!important}
+  #app .hero h1{font-size:40px!important;line-height:1.12!important}
+  #app .hero p{font-size:27px!important;line-height:1.35!important}
+  #app .bar h2{font-size:34px!important}
+  #app .bar button{font-size:27px!important;min-height:64px!important}
+  #app .grid{grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:16px!important}
+  #app .card{padding:20px 16px!important;min-height:105px!important}
+  #app .card b{font-size:28px!important;line-height:1.18!important}
+  #app .card small{font-size:21px!important;line-height:1.25!important;margin-top:9px!important}
+  #app .notice{font-size:24px!important;line-height:1.35!important;padding:16px!important}
+  #app .item b{font-size:29px!important}
+  #app .muted{font-size:22px!important}
+  #app button,#app .primary,#app .gold,#app .danger,#app .ghost,#app .drawer button{font-size:27px!important;min-height:64px!important}
+  #app input,#app select,#app textarea{font-size:27px!important;min-height:64px!important}
+  #app label{font-size:25px!important}
+  #app .drawer{left:-110vw!important;width:min(92vw,430px)!important;font-size:28px!important;transition:left .2s ease!important}
+  #app .drawer.open{left:0!important}
+  #app .drawer h2{font-size:36px!important}
+  #app .drawer button{font-size:26px!important}
+  #app .bottom{height:84px!important}
+  #app .bottom span{font-size:31px!important}
+  #app .bottom small{font-size:19px!important}
+  #app .box h2{font-size:32px!important}
 }
-
-@media print {
-  .top, .drawer, .bottom, .bar, .actions { display: none !important; }
-}
+@media print{.top,.drawer,.bottom,.bar,.actions{display:none!important}}
