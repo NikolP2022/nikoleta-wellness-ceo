@@ -12,28 +12,31 @@
 <body>
   <div id="app"></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.57.0/dist/umd/supabase.min.js"></script>
-  <script src="./app-v602.js?v=710"></script>
-  <script src="./appointment-direct-v613.js?v=710"></script>
-  <script src="./notification-settings-fix-v615.js?v=710"></script>
-  <script src="./notification-fix-v606.js?v=710"></script>
-  <script src="./reminder-sound-v614.js?v=710"></script>
-  <link rel="stylesheet" href="./mobile-refresh-v1.css?v=710">
+  <script src="./app-v602.js?v=708"></script>
+  <script src="./appointment-direct-v613.js?v=708"></script>
+  <script src="./notification-settings-fix-v615.js?v=708"></script>
+  <script src="./notification-fix-v606.js?v=708"></script>
+  <script src="./reminder-sound-v614.js?v=708"></script>
+  <link rel="stylesheet" href="./mobile-refresh-v1.css?v=708">
+  <link rel="stylesheet" href="./mobile-final-v708.css?v=708">
   <style>
-  @media screen and (max-width:1200px){
-    html,body{width:100%!important;min-width:0!important;max-width:100%!important;overflow-x:hidden!important;margin:0!important;padding:0!important}
-    #app{width:100%!important;min-width:0!important;max-width:100%!important;margin:0!important;padding:0!important;overflow-x:hidden!important;zoom:1!important}
-    #app .drawer{left:-110vw!important;right:auto!important;transform:none!important;visibility:hidden!important;pointer-events:none!important}
-    #app .drawer.open{left:0!important;visibility:visible!important;pointer-events:auto!important}
-  }
-  #greece-clock{font-family:Arial,sans-serif;display:flex;align-items:center;gap:5px;white-space:nowrap;font-size:18px}
-  @media(max-width:600px){#greece-clock{font-size:15px!important}}
+    @media screen and (max-width:1200px){
+      html,body{width:100%!important;min-width:0!important;max-width:100%!important;overflow-x:hidden!important;margin:0!important;padding:0!important}
+      #app{width:100%!important;min-width:0!important;max-width:100%!important;margin:0!important;padding:0!important;overflow-x:hidden!important;zoom:1!important}
+      #app .drawer{left:-110vw!important;right:auto!important;transform:none!important;visibility:hidden!important;pointer-events:none!important}
+      #app .drawer.open{left:0!important;visibility:visible!important;pointer-events:auto!important}
+    }
+    #greece-clock{font-family:Arial,sans-serif;display:flex;align-items:center;gap:6px;white-space:nowrap;font-size:18px;font-weight:700;color:#245b2b}
+    @media(max-width:600px){#greece-clock{font-size:17px!important}}
   </style>
-  <link rel="stylesheet" href="./mobile-final-v708.css?v=710">
   <script>
-  (()=>{'use strict';
+  (()=>{
+    'use strict';
     const TZ='Europe/Athens';
-    const greekTime=()=>new Intl.DateTimeFormat('el-GR',{timeZone:TZ,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(new Date());
-    function updateClock(){
+    function getTime(){
+      return new Intl.DateTimeFormat('el-GR',{timeZone:TZ,hour:'2-digit',minute:'2-digit',second:'2-digit',hour12:false}).format(new Date());
+    }
+    function update(){
       const top=document.querySelector('.top');
       if(!top)return;
       let el=document.getElementById('greece-clock');
@@ -42,32 +45,29 @@
         el.id='greece-clock';
         el.setAttribute('aria-label','Ώρα Ελλάδας');
         const menu=top.querySelector('.menu');
-        top.insertBefore(el,menu||null);
+        if(menu) top.insertBefore(el,menu); else top.appendChild(el);
       }
-      const time=greekTime();
-      const b=el.querySelector('b');
-      if(b)b.textContent=time;
-      else el.innerHTML='🇬🇷 <span>Ώρα Ελλάδας</span> <b>'+time+'</b>';
+      el.textContent='🇬🇷 Ώρα Ελλάδας  '+getTime();
     }
-    function hideHomeEmail(){
+    function removeHomeEmail(){
       const page=document.querySelector('.page');
       if(!page)return;
       const re=/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/ig;
       const walker=document.createTreeWalker(page,NodeFilter.SHOW_TEXT);
       const nodes=[];let n;
-      while(n=walker.nextNode()){
-        const p=n.parentElement;
-        if(p&&p.tagName!=='INPUT'&&p.tagName!=='TEXTAREA'&&re.test(n.nodeValue)){nodes.push(n);re.lastIndex=0;}
+      while((n=walker.nextNode())){
+        if(n.parentElement && !['INPUT','TEXTAREA'].includes(n.parentElement.tagName) && re.test(n.nodeValue)){
+          nodes.push(n);
+        }
         re.lastIndex=0;
       }
-      nodes.forEach(t=>{t.nodeValue=t.nodeValue.replace(re,'').replace(/\s{2,}/g,' ').trim();re.lastIndex=0;});
+      nodes.forEach(n=>{n.nodeValue=n.nodeValue.replace(re,'').replace(/\s{2,}/g,' ').trim();re.lastIndex=0;});
     }
-    function refresh(){updateClock();hideHomeEmail();}
-    setInterval(updateClock,1000);
-    setInterval(hideHomeEmail,1500);
-    setTimeout(refresh,300);
-    setTimeout(refresh,1200);
-    setTimeout(refresh,2500);
+    function run(){update();removeHomeEmail();}
+    setTimeout(run,1000);
+    setTimeout(run,2500);
+    setInterval(update,1000);
+    setInterval(removeHomeEmail,3000);
   })();
   </script>
 </body>
