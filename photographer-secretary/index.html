@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="el">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#171717">
+  <meta name="description" content="Ψηφιακή γραμματέας για επαγγελματία φωτογράφο γάμων και βαπτίσεων">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+  <title>PHOTO STUDIO — Digital Secretary</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">PHOTO STUDIO</div>
+        <h1>Ψηφιακή Γραμματέας</h1>
+        <p>Γάμοι &amp; Βαπτίσεις</p>
+      </div>
+      <button class="icon-btn" id="addQuick" aria-label="Γρήγορη προσθήκη">＋</button>
+    </header>
+
+    <main id="app">
+      <section class="hero-card">
+        <div>
+          <span class="hero-label">ΣΗΜΕΡΑ</span>
+          <h2 id="todayTitle">Η ημέρα σου οργανωμένη.</h2>
+          <p id="todayDate"></p>
+        </div>
+        <div class="hero-aperture">◉</div>
+      </section>
+
+      <section class="stats-grid">
+        <button class="stat-card" data-view="calendar"><strong id="statBookings">0</strong><span>Ραντεβού</span></button>
+        <button class="stat-card" data-view="clients"><strong id="statClients">0</strong><span>Πελάτες</span></button>
+        <button class="stat-card" data-view="editing"><strong id="statEditing">0</strong><span>Editing</span></button>
+        <button class="stat-card" data-view="finance"><strong id="statPending">0€</strong><span>Υπόλοιπα</span></button>
+      </section>
+
+      <section class="section-head">
+        <h2>Γρήγορη πρόσβαση</h2>
+      </section>
+      <section class="menu-grid">
+        <button data-view="calendar"><span>📅</span>Ημερολόγιο</button>
+        <button data-view="clients"><span>👤</span>Πελάτες</button>
+        <button data-view="weddings"><span>💍</span>Γάμοι</button>
+        <button data-view="baptisms"><span>⛪</span>Βαπτίσεις</button>
+        <button data-view="editing"><span>📸</span>Editing</button>
+        <button data-view="finance"><span>€</span>Οικονομικά</button>
+        <button data-view="delivery"><span>📦</span>Παραδόσεις</button>
+        <button data-view="notes"><span>📝</span>Σημειώσεις</button>
+      </section>
+
+      <section class="section-head">
+        <h2>Η ροή της δουλειάς</h2>
+      </section>
+      <div class="workflow">
+        <div>ΠΕΛΑΤΗΣ</div><b>→</b><div>ΠΡΟΣΦΟΡΑ</div><b>→</b><div>ΚΡΑΤΗΣΗ</div><b>→</b><div>ΦΩΤΟΓΡΑΦΙΣΗ</div><b>→</b><div>BACKUP</div><b>→</b><div>EDITING</div><b>→</b><div>GALLERY</div><b>→</b><div>ΠΑΡΑΔΟΣΗ</div>
+      </div>
+    </main>
+
+    <nav class="bottom-nav">
+      <button class="active" data-view="home">⌂<small>Αρχική</small></button>
+      <button data-view="calendar">▣<small>Ημερολόγιο</small></button>
+      <button data-view="clients">♙<small>Πελάτες</small></button>
+      <button data-view="finance">€<small>Οικονομικά</small></button>
+      <button data-view="more">☰<small>Περισσότερα</small></button>
+    </nav>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
