@@ -1,0 +1,24 @@
+/* Nikoleta Wellness CEO — mobile readability v2 */
+@media (max-width:1100px){
+#app{font-size:18px!important;-webkit-text-size-adjust:100%!important;text-size-adjust:100%!important}
+#app .brand small{font-size:11px!important;line-height:1.2!important}
+#app .brand b{font-size:20px!important;line-height:1.2!important}
+#app .hero small{font-size:12px!important}
+#app .hero h1{font-size:30px!important;line-height:1.12!important}
+#app .hero p{font-size:17px!important;line-height:1.4!important}
+#app .bar h2{font-size:24px!important}
+#app .card b,#app .grid .card b:after{font-size:18px!important;line-height:1.2!important}
+#app .card small{font-size:13px!important;line-height:1.3!important}
+#app .item b{font-size:20px!important}
+#app .muted{font-size:15px!important;line-height:1.4!important}
+#app .notice{font-size:15px!important;line-height:1.4!important}
+#app label{font-size:17px!important;line-height:1.35!important}
+#app input:not([type="checkbox"]),#app select,#app textarea{font-size:18px!important;min-height:54px!important;padding:13px 14px!important}
+#app button,#app .primary,#app .gold,#app .danger,#app .ghost{font-size:17px!important;min-height:50px!important;padding:12px 15px!important}
+#app .drawer{font-size:18px!important}
+#app .drawer button{font-size:17px!important;min-height:50px!important}
+#app .bottom small{font-size:12px!important}
+#app .bottom span{font-size:24px!important}
+.nw-clock{width:min(380px,94vw)!important;padding:20px!important}.nw-clock-value{font-size:38px!important}.nw-clock-face{width:300px!important;height:300px!important}.nw-clock-num{width:44px!important;height:44px!important;font-size:15px!important}
+}
+@media(max-width:520px){#app .brand b{font-size:18px!important}#app .hero h1{font-size:27px!important}#app .hero p{font-size:16px!important}#app .bar h2{font-size:22px!important}#app .card b,#app .grid .card b:after{font-size:16px!important}#app .card small{font-size:12px!important}#app label{font-size:16px!important}#app input:not([type="checkbox"]),#app select,#app textarea{font-size:17px!important;min-height:52px!important}#app button,#app .primary,#app .gold,#app .danger,#app .ghost{font-size:16px!important}.nw-clock-face{width:270px!important;height:270px!important}}
