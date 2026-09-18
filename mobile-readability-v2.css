@@ -1,24 +1,14 @@
-/* Nikoleta Wellness CEO — mobile readability v2 */
+/* Nikoleta Wellness CEO — dedicated mobile typography */
 @media (max-width:1100px){
-#app{font-size:18px!important;-webkit-text-size-adjust:100%!important;text-size-adjust:100%!important}
-#app .brand small{font-size:11px!important;line-height:1.2!important}
-#app .brand b{font-size:20px!important;line-height:1.2!important}
-#app .hero small{font-size:12px!important}
-#app .hero h1{font-size:30px!important;line-height:1.12!important}
-#app .hero p{font-size:17px!important;line-height:1.4!important}
-#app .bar h2{font-size:24px!important}
-#app .card b,#app .grid .card b:after{font-size:18px!important;line-height:1.2!important}
-#app .card small{font-size:13px!important;line-height:1.3!important}
-#app .item b{font-size:20px!important}
-#app .muted{font-size:15px!important;line-height:1.4!important}
-#app .notice{font-size:15px!important;line-height:1.4!important}
-#app label{font-size:17px!important;line-height:1.35!important}
-#app input:not([type="checkbox"]),#app select,#app textarea{font-size:18px!important;min-height:54px!important;padding:13px 14px!important}
-#app button,#app .primary,#app .gold,#app .danger,#app .ghost{font-size:17px!important;min-height:50px!important;padding:12px 15px!important}
-#app .drawer{font-size:18px!important}
-#app .drawer button{font-size:17px!important;min-height:50px!important}
-#app .bottom small{font-size:12px!important}
-#app .bottom span{font-size:24px!important}
-.nw-clock{width:min(380px,94vw)!important;padding:20px!important}.nw-clock-value{font-size:38px!important}.nw-clock-face{width:300px!important;height:300px!important}.nw-clock-num{width:44px!important;height:44px!important;font-size:15px!important}
+html,body,#app{font-family:Arial,'Helvetica Neue',sans-serif!important;-webkit-text-size-adjust:100%!important;text-size-adjust:100%!important}
+#app{font-size:19px!important}
+#app .brand b{font-size:22px!important}.hero h1,#app .hero h1{font-size:32px!important;line-height:1.15!important}.hero p,#app .hero p{font-size:19px!important;line-height:1.5!important}.bar h2,#app .bar h2{font-size:26px!important;line-height:1.25!important}
+#app .card b,#app .grid .card b,#app .grid .card b:after{font-size:20px!important;line-height:1.3!important}#app .card small{font-size:15px!important;line-height:1.4!important}#app .item b{font-size:21px!important}.muted,#app .muted,.notice,#app .notice{font-size:16px!important;line-height:1.5!important}#app label{font-size:18px!important;line-height:1.4!important;font-weight:600!important}
+#app input:not([type=checkbox]),#app select,#app textarea{font-family:Arial,'Helvetica Neue',sans-serif!important;font-size:19px!important;line-height:1.35!important;min-height:58px!important;padding:14px 15px!important}#app button,#app .primary,#app .gold,#app .danger,#app .ghost{font-family:Arial,'Helvetica Neue',sans-serif!important;font-size:18px!important;line-height:1.3!important;min-height:54px!important;padding:13px 16px!important}
+#app .drawer{font-size:19px!important}#app .drawer button{font-size:18px!important;min-height:52px!important}.bottom small,#app .bottom small{font-size:14px!important}.bottom span,#app .bottom span{font-size:26px!important}
 }
-@media(max-width:520px){#app .brand b{font-size:19px!important}#app .hero h1{font-size:28px!important}#app .hero p{font-size:17px!important}#app .bar h2{font-size:24px!important}#app .card b,#app .grid .card b:after{font-size:18px!important;line-height:1.25!important}#app .card small{font-size:14px!important}#app label{font-size:17px!important}#app input:not([type="checkbox"]),#app select,#app textarea{font-size:18px!important;min-height:54px!important}#app button,#app .primary,#app .gold,#app .danger,#app .ghost{font-size:17px!important}.nw-clock-face{width:270px!important;height:270px!important}}
+@media(max-width:600px){
+#app{font-size:20px!important}.brand b,#app .brand b{font-size:22px!important}.brand small,#app .brand small{font-size:13px!important}.hero h1,#app .hero h1{font-size:31px!important}.hero p,#app .hero p{font-size:18px!important}.bar h2,#app .bar h2{font-size:25px!important}.card b,#app .card b,#app .grid .card b{font-size:19px!important}.card small,#app .card small{font-size:15px!important}#app label{font-size:18px!important}#app input:not([type=checkbox]),#app select,#app textarea{font-size:19px!important;min-height:58px!important}#app button,#app .primary,#app .gold,#app .danger,#app .ghost{font-size:18px!important;min-height:54px!important}
+.nw-clock-face{width:min(290px,78vw)!important;height:min(290px,78vw)!important}.nw-clock-num{width:42px!important;height:42px!important;font-size:15px!important}.nw-clock-value{font-size:38px!important}
+}
+@media(max-width:380px){#app .hero h1{font-size:28px!important}#app .card b,#app .grid .card b{font-size:18px!important}#app input:not([type=checkbox]),#app select,#app textarea{font-size:18px!important}}
