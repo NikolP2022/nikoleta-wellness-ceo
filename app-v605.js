@@ -100,6 +100,7 @@ async function reserveSchedule(k,id,data){
   for(const x of scheduleRanges(k,data)){
     const ins=await sb.from('schedule_blocks').insert({...x,user_id:user.id,source_type:k,source_id:id});
     if(ins.error){
+      await sb.from('schedule_blocks').delete().eq('user_id',user.id).eq('source_id',id);
       if(old.length)await sb.from('schedule_blocks').insert(old.map(({id:rid,created_at,updated_at,...row})=>row));
       return {ok:false,error:ins.error};
     }
