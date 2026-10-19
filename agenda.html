@@ -43,7 +43,8 @@ $('enableNotifications').addEventListener('click',async()=>{if(!('Notification'i
 $('reminderLead').addEventListener('change',()=>{try{localStorage.setItem('healthy-life-reminder-lead', $('reminderLead').value)}catch(e){};reminderMessage('Η υπενθύμιση ορίστηκε: '+($('reminderLead').selectedOptions[0]?.textContent||'')+'.')});
 try{const savedLead=localStorage.getItem('healthy-life-reminder-lead');if(savedLead!==null&&$('reminderLead'))$('reminderLead').value=savedLead}catch(e){}
 if(!reminderTimer)reminderTimer=window.setInterval(checkReminders,15000);
-\n// Ανανέωση δεδομένων όταν επιστρέφεις στην εφαρμογή από άλλη συσκευή/καρτέλα.
+
+// Ανανέωση δεδομένων όταν επιστρέφεις στην εφαρμογή από άλλη συσκευή/καρτέλα.
 window.addEventListener('focus',()=>{if(user)load()});
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&user)load()});
 (async()=>{if(!window.supabase){authMsg('Δεν φορτώθηκε η υπηρεσία σύνδεσης. Δοκίμασε ξανά με σύνδεση στο διαδίκτυο.');return}sb=window.supabase.createClient(URL,KEY);sb.auth.onAuthStateChange((_event,session)=>{user=session?.user||null;showApp(!!user);syncRealtime(user?.id||null);if(user)queueMicrotask(()=>load())});const {data:{session}}=await sb.auth.getSession();user=session?.user||null;showApp(!!user);syncRealtime(user?.id||null);if(user)await load()})();
