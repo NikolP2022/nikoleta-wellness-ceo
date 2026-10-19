@@ -1,4 +1,4 @@
-const CACHE='healthy-life-planner-v1';
+const CACHE='healthy-life-planner-v2';
 const SHELL=['./agenda.html','./agenda-manifest.json','./agenda-icon.svg'];
 self.addEventListener('install',event=>{event.waitUntil((async()=>{const cache=await caches.open(CACHE);await Promise.all(SHELL.map(async url=>{try{const response=await fetch(url);if(response.ok)await cache.put(url,response)}catch(_){}}));try{const response=await fetch('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2');if(response.ok)await cache.put('https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2',response)}catch(_){}await self.skipWaiting()})())});
 self.addEventListener('activate',event=>{event.waitUntil((async()=>{const keys=await caches.keys();await Promise.all(keys.filter(key=>key.startsWith('healthy-life-planner-')&&key!==CACHE).map(key=>caches.delete(key)));await self.clients.claim()})())});
