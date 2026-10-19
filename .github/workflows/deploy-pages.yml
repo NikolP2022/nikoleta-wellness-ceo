@@ -33,6 +33,19 @@ jobs:
           node --check modules-v235.js
           node --check sw-v234.js
           node --check completion-v230.js
+      - name: Syntax check planner app script
+        run: |
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+          html = Path("agenda.html").read_text(encoding="utf-8")
+          scripts = re.findall(r"<script\\b(?![^>]*\\bsrc=)[^>]*>(.*?)</script\\s*>", html, re.I | re.S)
+          if not scripts:
+              raise SystemExit("No inline script found in agenda.html")
+          Path("/tmp/agenda-inline.js").write_text("\\n;\\n".join(scripts), encoding="utf-8")
+          print(f"Extracted {len(scripts)} inline script block(s)")
+          PY
+          node --check /tmp/agenda-inline.js
       - name: Setup Pages
         uses: actions/configure-pages@v5
       - name: Upload site
