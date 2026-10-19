@@ -31,6 +31,9 @@ document.addEventListener('change',async e=>{if(e.target.dataset.done){const {er
 document.addEventListener('click',async e=>{const d=e.target.dataset.del;if(d&&confirm('Να διαγραφεί αυτή η εργασία;')){const {error}=await sb.from('planner_tasks').delete().eq('id',d);if(error)msg(error.message);else await load()}const n=e.target.dataset.noteDel;if(n&&confirm('Να διαγραφεί αυτή η σημείωση;')){const {error}=await sb.from('agenda_notes').delete().eq('id',n);if(error)msg(error.message);else await load()}});
 document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-tab]').forEach(x=>x.classList.toggle('active',x===b));['home','tasks','notes'].forEach(k=>$(k+'Tab').classList.toggle('hidden',k!==b.dataset.tab))}));
 $('taskFilter').addEventListener('change',render);
+// Ανανέωση δεδομένων όταν επιστρέφεις στην εφαρμογή από άλλη συσκευή/καρτέλα.
+window.addEventListener('focus',()=>{if(user)load()});
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&user)load()});
 (async()=>{if(!window.supabase){authMsg('Δεν φορτώθηκε η υπηρεσία σύνδεσης. Δοκίμασε ξανά με σύνδεση στο διαδίκτυο.');return}sb=window.supabase.createClient(URL,KEY);sb.auth.onAuthStateChange((_event,session)=>{user=session?.user||null;showApp(!!user);if(user)queueMicrotask(()=>load())});const {data:{session}}=await sb.auth.getSession();user=session?.user||null;showApp(!!user);if(user)await load()})();
 })();
 </script></body></html>
