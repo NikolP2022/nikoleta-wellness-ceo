@@ -50,12 +50,12 @@ async function activatePushNotifications(){
   if(permission!=='granted'){reminderMessage(permission==='denied'?'Οι ειδοποιήσεις έχουν αποκλειστεί. Ενεργοποίησέ τες στις ρυθμίσεις του browser/κινητού.':'Δεν δόθηκε άδεια ειδοποιήσεων.');return}
   const registration=await navigator.serviceWorker.register('./agenda-sw.js');
   await navigator.serviceWorker.ready;
+  // Ανανεώνουμε τη συνδρομή σε αυτή τη συσκευή ώστε να μη μείνει αποθηκευμένο παλιό/λήξαν endpoint.
   let subscription=await registration.pushManager.getSubscription();
-  if(!subscription){
-   const {data:keyData,error:keyError}=await sb.functions.invoke('register-push',{body:{}});
-   if(keyError||!keyData?.publicKey)throw new Error(keyError?.message||keyData?.error||'Δεν λήφθηκε το κλειδί ειδοποιήσεων');
-   subscription=await registration.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:pushKeyBytes(keyData.publicKey)});
-  }
+  if(subscription){await subscription.unsubscribe();subscription=null;}
+  const {data:keyData,error:keyError}=await sb.functions.invoke('register-push',{body:{}});
+  if(keyError||!keyData?.publicKey)throw new Error(keyError?.message||keyData?.error||'Δεν λήφθηκε το κλειδί ειδοποιήσεων');
+  subscription=await registration.pushManager.subscribe({userVisibleOnly:true,applicationServerKey:pushKeyBytes(keyData.publicKey)});
   const {data:saveData,error:saveError}=await sb.functions.invoke('register-push',{body:subscription.toJSON()});
   if(saveError||!saveData?.ok)throw new Error(saveError?.message||saveData?.error||'Δεν αποθηκεύτηκε η συνδρομή ειδοποιήσεων');
   reminderMessage('Οι push ειδοποιήσεις ενεργοποιήθηκαν σε αυτή τη συσκευή. Κάνε μία δοκιμή με μελλοντική υπενθύμιση.');
