@@ -55,3 +55,15 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Smoke test published planner
+        env:
+          PAGE_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          set -euo pipefail
+          curl --fail --silent --show-error --location --retry 10 --retry-delay 5 --retry-all-errors "$PAGE_URL/agenda.html" -o /tmp/published-agenda.html
+          grep -q '<title>Nikoleta Healthy Life Planner</title>' /tmp/published-agenda.html
+          curl --fail --silent --show-error --location --retry 10 --retry-delay 5 --retry-all-errors "$PAGE_URL/agenda-manifest.json" -o /tmp/published-manifest.json
+          grep -q '"start_url"' /tmp/published-manifest.json
+          curl --fail --silent --show-error --location --retry 10 --retry-delay 5 --retry-all-errors "$PAGE_URL/agenda-sw.js" -o /tmp/published-sw.js
+          grep -q 'addEventListener' /tmp/published-sw.js
+          echo "Published planner HTML, manifest, and service worker responded successfully."
