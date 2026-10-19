@@ -1,0 +1,19 @@
+{
+  "name": "Nikoleta Healthy Life Planner",
+  "short_name": "Healthy Life",
+  "description": "Προσωπική ψηφιακή ατζέντα",
+  "lang": "el",
+  "start_url": "./agenda.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#faf8f1",
+  "theme_color": "#245b2b",
+  "icons": [
+    {
+      "src": "./agenda-icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
