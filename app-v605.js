@@ -67,6 +67,46 @@ body{background:#f8f7f2;color:var(--ink);font-family:Inter,"Segoe UI",Arial,sans
 .dashboard-cta{width:100%;padding:15px;border-radius:16px;font-weight:800;font-size:15px;margin-top:16px}
 @media(min-width:700px){.dashboard-stats{grid-template-columns:repeat(4,minmax(0,1fr))}.dashboard-shortcuts{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:600px){.top{height:76px}.page{padding:14px 12px 105px}.hero{padding:20px 18px}.dashboard-greeting{margin-top:16px}.dashboard-avatar{width:56px;height:56px;flex-basis:56px}.dashboard-quote{font-size:15px;padding:16px}.weekly-wrap{padding:12px}.bottom{height:72px}}
+
+/* Exact dashboard composition inspired by the supplied reference */
+.top{height:76px;background:#fffdfa;border-bottom:1px solid #e8e2d8}
+.brand small{font-family:cursive;font-style:italic;font-size:22px;letter-spacing:0;color:#245b2b}
+.brand b{font-family:Georgia,serif;font-size:18px;letter-spacing:2px;color:#183e22}
+.menu{border-radius:16px;background:#174522;width:52px;height:52px}
+.page{max-width:760px;padding:12px 13px 100px}
+.hero{display:none}
+.dashboard-greeting{margin:16px 2px;gap:13px}
+.dashboard-avatar{width:64px;height:64px;flex-basis:64px;font-size:25px}
+.dashboard-greeting h2{font-family:Georgia,serif;font-size:20px}
+.dashboard-quote{font-family:Georgia,serif;font-size:16px;border-radius:19px;padding:17px 20px;margin:14px 0;background:linear-gradient(120deg,#1b5226,#3b773e);border:1px solid #c9aa6a}
+.dashboard-section-title{margin:17px 2px 9px}
+.dashboard-section-title b{font-size:13px;letter-spacing:.7px}
+.dashboard-main-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(125px,.75fr);gap:10px}
+.dashboard-panel{background:#fff;border:1px solid #ebe5da;border-radius:19px;padding:13px;box-shadow:0 4px 16px #24382a0b;min-width:0}
+.dashboard-panel h3{margin:0 0 12px;font-size:13px;letter-spacing:.3px;color:#27382c}
+.dashboard-event{padding:9px 8px;border:0;border-radius:10px;background:#f7f8f3;gap:8px}
+.dashboard-event:nth-child(2n){background:#fbf2dc}
+.dashboard-event-time{min-width:52px;font-size:11px}
+.dashboard-event-title{font-size:11px}.dashboard-event-type{font-size:10px}
+.dashboard-empty{font-size:11px;color:#777;line-height:1.5}
+.dashboard-ring{width:96px;height:96px;border-radius:50%;margin:4px auto 10px;display:grid;place-items:center;background:conic-gradient(#34743c var(--progress,60%),#e9eee7 0);position:relative}
+.dashboard-ring:before{content:"";position:absolute;inset:8px;background:#fff;border-radius:50%}
+.dashboard-ring strong{position:relative;font-family:Georgia,serif;font-size:22px;color:#263d2b}
+.dashboard-ring-caption{text-align:center;font-size:10px;line-height:1.4;color:#6c756d}
+.dashboard-goals{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.dashboard-goal{background:#fff;border:1px solid #ebe5da;border-radius:15px;padding:10px 4px 8px;text-align:center;min-width:0;box-shadow:0 3px 12px #26392d08}
+.dashboard-goal i{display:grid;place-items:center;width:34px;height:34px;margin:0 auto 6px;border:1px solid #dce6d9;border-radius:50%;font-style:normal;color:#245b2b;font-size:17px}
+.dashboard-goal b{display:block;font-size:10px;color:#314236;line-height:1.2}
+.dashboard-goal small{display:block;color:#7a817b;font-size:9px;margin-top:4px;line-height:1.2}
+.dashboard-bottom-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dashboard-mini-stat{display:flex;justify-content:space-between;gap:8px;border-bottom:1px solid #f0ece4;padding:7px 0;font-size:11px}
+.dashboard-mini-stat:last-child{border-bottom:0}
+.dashboard-mini-stat strong{font-family:Georgia,serif;font-size:18px;color:#245b2b}
+.dashboard-progress{height:8px;border-radius:8px;background:#e8eee6;overflow:hidden;margin:9px 0}
+.dashboard-progress span{display:block;height:100%;background:linear-gradient(90deg,#245b2b,#6e9a62);border-radius:8px}
+.dashboard-cta{width:100%;border-radius:14px;margin-top:14px;padding:14px;font-size:14px;letter-spacing:.3px}
+@media(max-width:390px){.dashboard-main-grid{grid-template-columns:minmax(0,1.1fr) minmax(112px,.9fr)}.dashboard-panel{padding:10px}.dashboard-goals{gap:5px}.dashboard-goal{padding:8px 2px}.dashboard-goal b{font-size:9px}}
+@media(min-width:700px){.page{max-width:900px}.dashboard-goals{grid-template-columns:repeat(10,minmax(0,1fr))}}
 `;if(k==='finance')return `<div class="muted">${esc(o.transaction_date||'')} • ${esc(o.transaction_type||'')} • ${esc(o.amount??'')} €</div><div class="muted">${esc(o.description||'')}</div>${o.notes?`<div class="notice">📝 ${esc(o.notes)}</div>`:''}`;if(k==='followups')return `<div class="muted">${esc(o.follow_up_date||'')} ${o.follow_up_time?`• ${esc(tm(o.follow_up_time))}`:''} • ${esc(o.status||'')}</div>${o.notes?`<div class="notice">📝 ${esc(o.notes)}</div>`:''}`;if(k==='orders')return `<div class="muted">${esc(o.order_date||'')} • ${esc(o.product_name||'')} • ${esc(o.quantity??'')}</div>${o.notes?`<div class="notice">📝 ${esc(o.notes)}</div>`:''}`;if(k==='calendar')return `<div class="muted">${esc(o.event_date||'')} • ${esc(tm(o.start_time))}${o.end_time?`–${esc(tm(o.end_time))}`:''} • ${esc(o.event_type||'')}</div>${o.notes?`<div class="notice">📝 ${esc(o.notes)}</div>`:''}`;if(k==='appointments')return `<div class="muted"><b>${esc(o.title||'Ραντεβού')}</b> • ${esc(o.appointment_date||'')} • ${esc(tm(o.start_time))}${o.end_time?'–'+esc(tm(o.end_time)):''}</div><div class="muted">${esc(o.appointment_type||'')} ${o.status?'• '+esc(o.status):''}</div>${o.notes?`<div class="notice">📝 ${esc(o.notes)}</div>`:''}`;if(k==='clients')return `<div class="muted">${esc(o.phone||'')} ${o.email?'• '+esc(o.email):''}</div>${o.goal?`<div class="muted">🎯 ${esc(o.goal)}</div>`:''}${o.notes?`<div class="notice">📝 ${esc(o.notes)}</div>`:''}`;return o.notes?`<div class="notice">📝 ${esc(o.notes)}</div>`:''}
 function formFields(k,o){return(SC[k]||[]).map(([n,l,t])=>{let v=o?.[n]??'';if(t==='client'){let current=clientName(v,'');return '<label>'+l+'<input type="text" name="'+n+'" data-client-input="1" list="nw-client-list" autocomplete="name" placeholder="Γράψε το όνομα του πελάτη" value="'+esc(current)+'"></label>'}if(t==='textarea')return '<label>'+l+'<textarea name="'+n+'">'+esc(v)+'</textarea></label>';if(t==='check')return '<label><input type="checkbox" name="'+n+'" '+(v?'checked':'')+'> '+l+'</label>';if(t==='time')return '<label>'+l+'<input name="'+n+'" type="time" value="'+esc(tm(v))+'"></label>';if(t.startsWith('select:'))return '<label>'+l+'<select name="'+n+'">'+t.slice(7).split(',').map(x=>'<option value="'+esc(x)+'" '+(String(v)===x?'selected':'')+'>'+esc(x)+'</option>').join('')+'</select></label>';return '<label>'+l+'<input name="'+n+'" type="'+t+'" value="'+esc(v)+'"></label>'}).join('')}
 function installClientList(){let dl=document.getElementById('nw-client-list');if(!dl){dl=document.createElement('datalist');dl.id='nw-client-list';document.body.appendChild(dl)}dl.innerHTML=(cache.clients||[]).map(c=>'<option value="'+esc(c.name)+'"></option>').join('')}
@@ -80,41 +120,36 @@ function weeklyEvents(){let out=[];const push=(type,key,arr,dateField,timeField,
 function weeklyPlan(){let d=new Date();d.setDate(d.getDate()+homeWeekOffset);let date=localISO(d),ev=weeklyEvents().filter(x=>x.date===date),hours=[];for(let h=0;h<=23;h++)hours.push(h);let label=d.toLocaleDateString('el-GR',{weekday:'long',day:'2-digit',month:'2-digit',year:'numeric'});return '<section class="weekly-wrap"><div class="weekly-head"><div><b>📅 ΗΜΕΡΗΣΙΟ ΗΜΕΡΟΛΟΓΙΟ</b><small>'+esc(label)+'</small></div><div class="weekly-nav"><button class="ghost" id="wprev">‹</button><button class="gold" id="wtoday">Σήμερα</button><button class="ghost" id="wnext">›</button></div></div><div class="weekly-scroll"><div class="weekly-grid" style="grid-template-columns:78px minmax(320px,1fr)"><div class="week-corner">ΩΡΑ</div><div class="week-day">'+esc(label)+'</div>'+hours.map(h=>'<div class="week-time">'+String(h).padStart(2,'0')+':00</div><div class="week-cell">'+ev.filter(x=>Number((x.time||'').slice(0,2))===h).map(x=>'<button type="button" class="week-event '+x.type+'" data-open-schedule="1" data-open-key="'+esc(x.key)+'" data-open-id="'+esc(x.id)+'">'+esc(x.title)+'</button>').join('')+'</div>').join('')+'</div></div><div class="weekly-legend"><span>📅 Ραντεβού</span><span>✓ Planner</span><span>🎓 Εκπαίδευση</span><span>📞 Follow-up</span><span>🗓️ Ημερολόγιο</span></div></section>'}
 
 function home(){
- const todayEvents=weeklyEvents().filter(e=>e.date===today()).sort((a,b)=>a.time.localeCompare(b.time));
- const count=k=>(cache[k]||[]).length;
+ const todayKey=today(),todayEvents=weeklyEvents().filter(e=>e.date===todayKey).sort((a,b)=>a.time.localeCompare(b.time));
+ const month=todayKey.slice(0,7);
+ const todayFollow=(cache.followups||[]).filter(x=>String(x.follow_up_date||'')===todayKey).length;
+ const todayTasks=(cache.planner||[]).filter(x=>String(x.task_date||'')===todayKey);
+ const doneTasks=todayTasks.filter(x=>x.completed===true||x.status==='completed'||x.done===true).length;
+ const success=todayTasks.length?Math.round(doneTasks/todayTasks.length*100):0;
+ const monthIncome=(cache.finance||[]).filter(x=>String(x.transaction_date||'').startsWith(month)&&(x.transaction_type==='income'||x.type==='income')).reduce((n,x)=>n+Number(x.amount||0),0);
+ const monthExpense=(cache.finance||[]).filter(x=>String(x.transaction_date||'').startsWith(month)&&(x.transaction_type==='expense'||x.type==='expense')).reduce((n,x)=>n+Number(x.amount||0),0);
+ const weekStart=new Date();weekStart.setDate(weekStart.getDate()-6);weekStart.setHours(0,0,0,0);
+ const tanitaWeek=(cache.tanita||[]).filter(x=>{let d=new Date(x.measurement_date||x.created_at||0);return d>=weekStart}).length;
  const dateLabel=new Date().toLocaleDateString('el-GR',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
- const eventRows=todayEvents.length?todayEvents.slice(0,4).map(e=>'<div class="dashboard-event"><div class="dashboard-event-time">'+esc(e.time)+'</div><div><div class="dashboard-event-title">'+esc(e.title)+'</div><div class="dashboard-event-type">'+(e.type==='appointment'?'Ραντεβού':e.type==='planner'?'Εργασία':e.type==='training'?'Εκπαίδευση':e.type==='followup'?'Follow-up':'Εκδήλωση')+'</div></div></div>').join(''):'<div class="empty" style="background:#fff;border:1px solid #ebe5da;border-radius:16px">Δεν υπάρχουν προγραμματισμένες δραστηριότητες για σήμερα.</div>';
+ const agenda=todayEvents.length?todayEvents.slice(0,4).map(e=>'<div class="dashboard-event"><div class="dashboard-event-time">'+esc(e.time)+'</div><div><div class="dashboard-event-title">'+esc(e.title)+'</div><div class="dashboard-event-type">'+(e.type==='appointment'?'Ραντεβού':e.type==='planner'?'Εργασία':e.type==='training'?'Εκπαίδευση':e.type==='followup'?'Follow-up':'Εκδήλωση')+'</div></div></div>').join(''):'<div class="dashboard-empty">Δεν έχεις προγραμματισμένες δραστηριότητες για σήμερα.</div>';
+ const goalItems=[['♧','Επαφές','20'],['✉','Προσκλήσεις','6'],['▣','Παρουσιάσεις','2'],['☎','Follow-up',String(todayFollow)],['▤','Ανάρτηση','1'],['▣','Story','1'],['▣','Reel','1'],['♧','Εκπαίδευση','1'],['♢','Νερό','3 λίτρα'],['⌁','Άσκηση','30′']];
  view.innerHTML='<section class="page">'+
- '<div class="hero"><small>INDEPENDENT HERBALIFE DISTRIBUTOR</small><h1>Nikoleta Wellness CEO</h1><p>BUILD YOUR HEALTH · BUILD YOUR BUSINESS ♥</p></div>'+
  '<div class="dashboard-greeting"><div class="dashboard-avatar">🌿</div><div><h2>Καλημέρα, Νικολέτα! ☀️</h2><p>'+esc(dateLabel)+'</p></div></div>'+
- '<div class="dashboard-quote">Η συνέπεια δημιουργεί αποτελέσματα.<br>Σήμερα είναι άλλη μία ευκαιρία να προχωρήσεις ένα βήμα μπροστά.</div>'+
- '<div class="dashboard-section-title"><b>📅 ΣΗΜΕΡΑ</b><button class="ghost" data-go="appointments">Όλα τα ραντεβού →</button></div>'+
- '<div class="dashboard-agenda">'+eventRows+'</div>'+
- '<div class="dashboard-section-title"><b>Η ΕΠΙΧΕΙΡΗΣΗ ΜΟΥ</b><span class="muted">Ζωντανή εικόνα καταχωρήσεων</span></div>'+
- '<div class="dashboard-stats">'+
- '<div class="dashboard-stat"><span>👥 Πελάτες</span><strong>'+count('clients')+'</strong><span>Καταχωρημένοι φάκελοι</span></div>'+
- '<div class="dashboard-stat"><span>🤝 Συνεργάτες</span><strong>'+count('partners')+'</strong><span>Καταχωρημένοι φάκελοι</span></div>'+
- '<div class="dashboard-stat"><span>📅 Ραντεβού</span><strong>'+count('appointments')+'</strong><span>Συνολικές καταχωρήσεις</span></div>'+
- '<div class="dashboard-stat"><span>⚖️ Μετρήσεις Tanita</span><strong>'+count('tanita')+'</strong><span>Αποθηκευμένες μετρήσεις</span></div>'+
+ '<div class="dashboard-quote">Η συνέπεια δημιουργεί αποτελέσματα.<br>Σήμερα είναι άλλη μία ευκαιρία να αλλάξεις ζωές.</div>'+
+ '<div class="dashboard-main-grid">'+
+ '<section class="dashboard-panel"><h3>▣ ΣΗΜΕΡΑ</h3><div class="dashboard-agenda">'+agenda+'</div><button class="ghost" style="width:100%;margin-top:8px" data-go="appointments">Προβολή όλων →</button></section>'+
+ '<section class="dashboard-panel"><h3>DAILY SUCCESS</h3><div class="dashboard-ring" style="--progress:'+success+'%"><strong>'+success+'%</strong></div><div class="dashboard-ring-caption">'+(todayTasks.length?doneTasks+' από '+todayTasks.length+' εργασίες ολοκληρώθηκαν':'Η καθημερινή σου συνέπεια χτίζει αποτελέσματα.')+'</div></section>'+
  '</div>'+
- '<div class="dashboard-section-title"><b>ΓΡΗΓΟΡΗ ΠΡΟΣΒΑΣΗ</b><span class="muted">Οι βασικές σου ενότητες</span></div>'+
- '<div class="dashboard-shortcuts">'+
- '<button class="dashboard-shortcut" data-go="clients"><b>👥 Πελάτες</b><small>Προσωπικοί φάκελοι & ιστορικό</small></button>'+
- '<button class="dashboard-shortcut" data-go="partners"><b>🤝 Συνεργάτες</b><small>ID, βαθμίδες & προκρίσεις</small></button>'+
- '<button class="dashboard-shortcut" data-go="tanita"><b>⚖️ Tanita Center</b><small>Μετρήσεις & παρακολούθηση</small></button>'+
- '<button class="dashboard-shortcut" data-go="planner"><b>✓ Planner</b><small>Στόχοι & καθημερινές εργασίες</small></button>'+
- '<button class="dashboard-shortcut" data-go="calendar"><b>🗓️ Ημερολόγιο</b><small>Οργάνωση δραστηριοτήτων</small></button>'+
- '<button class="dashboard-shortcut" data-go="training"><b>🎓 Εκπαιδεύσεις</b><small>Εκπαιδευτικό πρόγραμμα</small></button>'+
- '<button class="dashboard-shortcut" data-go="orders"><b>🛒 Παραγγελίες</b><small>Παρακολούθηση παραγγελιών</small></button>'+
- '<button class="dashboard-shortcut" data-go="finance"><b>€ Οικονομικά</b><small>Έσοδα & έξοδα</small></button>'+
- '</div><button class="primary dashboard-cta" data-go="appointments">＋ ΝΕΑ ΕΝΕΡΓΕΙΑ · ΡΑΝΤΕΒΟΥ</button>'+
- weeklyPlan()+'</section>';
+ '<div class="dashboard-section-title"><b>ΣΤΟΧΟΙ ΗΜΕΡΑΣ</b><span class="muted">'+doneTasks+'/'+todayTasks.length+' ολοκληρωμένα</span></div>'+
+ '<section class="dashboard-panel"><div class="dashboard-goals">'+goalItems.map(g=>'<div class="dashboard-goal"><i>'+g[0]+'</i><b>'+g[1]+'</b><small>'+g[2]+'</small></div>').join('')+'</div></section>'+
+ '<div class="dashboard-section-title"><b>Η ΕΠΙΧΕΙΡΗΣΗ ΜΟΥ</b></div>'+
+ '<div class="dashboard-bottom-grid">'+
+ '<section class="dashboard-panel"><h3>👥 ΠΕΛΑΤΕΣ</h3><div class="dashboard-mini-stat"><span>Σύνολο πελατών</span><strong>'+(cache.clients||[]).length+'</strong></div><div class="dashboard-mini-stat"><span>Follow-up σήμερα</span><strong>'+todayFollow+'</strong></div><div class="dashboard-mini-stat"><span>Tanita αυτή την εβδομάδα</span><strong>'+tanitaWeek+'</strong></div><button class="ghost" style="width:100%;margin-top:8px" data-go="clients">Προβολή όλων →</button></section>'+
+ '<section class="dashboard-panel"><h3>BUSINESS</h3><div class="dashboard-mini-stat"><span>Συνεργάτες</span><strong>'+(cache.partners||[]).length+'</strong></div><div class="dashboard-mini-stat"><span>Έσοδα μήνα</span><strong>€'+monthIncome.toFixed(0)+'</strong></div><div class="dashboard-mini-stat"><span>Έξοδα μήνα</span><strong>€'+monthExpense.toFixed(0)+'</strong></div></section>'+
+ '</div>'+
+ '<button class="primary dashboard-cta" data-go="appointments">＋ ΝΕΑ ΕΝΕΡΓΕΙΑ</button>'+
+ '</section>';
  bindNav();
- view.querySelectorAll('[data-open-schedule]').forEach(b=>b.onclick=()=>edit(b.dataset.openKey,b.dataset.openId));
- const prev=document.getElementById('wprev'),next=document.getElementById('wnext'),cur=document.getElementById('wtoday');
- if(prev)prev.onclick=()=>{homeWeekOffset--;render()};
- if(next)next.onclick=()=>{homeWeekOffset++;render()};
- if(cur)cur.onclick=()=>{homeWeekOffset=0;render()};
 }
 function folder(k){let arr=cache[k]||[];let cards=arr.map(o=>`<article class="item"><b>${esc(titleOf(k,o))}</b>${details(k,o)}<div class="actions">${k==='clients'?`<button class="primary" data-profile="${o.id}">📁 Άνοιγμα φακέλου</button>`:k==='partners'?`<button class="primary" data-partner-profile="${o.id}">📁 Άνοιγμα φακέλου</button>`:''}<button class="primary" data-edit="${o.id}">✏️ Επεξεργασία</button>${k==='tanita'?'':`<button class="gold" data-rem="${o.id}">🔔 Ειδοποίηση</button>`}<button class="danger" data-del="${o.id}">🗑️ Διαγραφή</button></div></article>`).join('');view.innerHTML=`<section class="page"><div class="hero"><small>${F[k][1].toUpperCase()}</small><h1>${F[k][0]} ${F[k][1]}</h1><p>${k==='appointments'?'Κάθε καρτέλα δείχνει ονοματεπώνυμο πελάτη και η Επεξεργασία ανοίγει με όλα τα ήδη αποθηκευμένα πεδία και σημειώσεις.':'Όλες οι καταχωρήσεις παραμένουν συγχρονισμένες.'}</p></div><div class="bar"><button class="primary" id="add">＋ Νέα εγγραφή</button><button class="gold" id="nall">🔔 Νέα υπενθύμιση</button></div><div class="list">${cards||'<div class="empty">Δεν υπάρχουν ακόμη καταχωρήσεις.</div>'}</div></section>`;bindNav();add.onclick=()=>edit(k,null);nall.onclick=()=>reminder(k,null);view.querySelectorAll('[data-profile]').forEach(b=>b.onclick=()=>{location.hash='#client/'+b.dataset.profile});view.querySelectorAll('[data-partner-profile]').forEach(b=>b.onclick=()=>{location.hash='#partner/'+b.dataset.partnerProfile});view.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>edit(k,b.dataset.edit));view.querySelectorAll('[data-rem]').forEach(b=>b.onclick=()=>reminder(k,b.dataset.rem));view.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>del(k,b.dataset.del))}
 function clientProfile(id){const c=(cache.clients||[]).find(x=>x.id===id);if(!c){location.hash='#clients';return}const related=key=>(cache[key]||[]).filter(x=>x.client_id===id);const rows=(key,label,sub)=>{let a=related(key);return '<section class="item"><div class="head"><b>'+label+'</b><span class="muted">'+a.length+' καταχωρήσεις</span></div>'+(a.length?a.map(o=>'<div class="notice"><b>'+esc(sub(o))+'</b><div class="muted">'+esc(o.measurement_date||o.appointment_date||o.follow_up_date||o.order_date||o.transaction_date||o.event_date||o.start_date||o.check_in_at||o.training_date||'')+(o.start_time?' • '+esc(tm(o.start_time)):'')+'</div>'+(o.notes?'<div class="muted">📝 '+esc(o.notes)+'</div>':'')+'</div>').join(''):'<p class="muted">Δεν υπάρχουν ακόμη καταχωρήσεις.</p>')+'</section>'};view.innerHTML='<section class="page"><div class="hero"><small>ΠΡΟΣΩΠΙΚΟΣ ΦΑΚΕΛΟΣ ΠΕΛΑΤΗ</small><h1>👤 '+esc(c.name)+'</h1><p>'+esc(c.phone||'Χωρίς τηλέφωνο')+' • '+esc(c.email||'Χωρίς email')+'</p><p>🎯 '+esc(c.goal||'Δεν έχει καταχωρηθεί στόχος')+' • '+esc(c.status||'')+'</p></div><div class="bar"><button class="ghost" id="backClients">← Πελάτες</button><button class="primary" id="editClient">✏️ Στοιχεία πελάτη</button></div><div class="grid"><article class="item"><b>📋 Προσωπικά στοιχεία</b><div class="muted">Διεύθυνση: '+esc(c.address||'—')+'</div><div class="muted">Περιοχή: '+esc(c.area||'—')+'</div><div class="muted">Ημ. γέννησης: '+esc(c.birth_date||'—')+'</div><div class="muted">Έναρξη: '+esc(c.start_date||'—')+'</div><div class="muted">Επόμενη μέτρηση: '+esc(c.next_measurement_date||'—')+'</div>'+(c.notes?'<div class="notice">📝 '+esc(c.notes)+'</div>':'')+'</article><article class="item"><b>📊 Σύνοψη φακέλου</b><div class="muted">⚖️ Μετρήσεις Tanita: '+related('tanita').length+'</div><div class="muted">📅 Ραντεβού: '+related('appointments').length+'</div><div class="muted">📞 Follow-ups: '+related('followups').length+'</div><div class="muted">🛒 Παραγγελίες: '+related('orders').length+'</div><div class="muted">💰 Οικονομικές εγγραφές: '+related('finance').length+'</div></article></div><div class="bar"><h2>Γρήγορες ενέργειες</h2></div><div class="actions"><button class="primary" id="newAppointment">＋ Ραντεβού</button><button class="gold" id="newTanita">＋ Μέτρηση Tanita</button><button class="ghost" id="newFollowup">＋ Follow-up</button></div><div class="bar"><h2>Ιστορικό πελάτη</h2></div>'+rows('tanita','⚖️ Ιστορικό μετρήσεων',o=>'Μέτρηση Tanita — '+(o.weight??'—')+' kg')+rows('appointments','📅 Ραντεβού',o=>o.title||'Ραντεβού')+rows('followups','📞 Follow-ups',o=>o.title||'Επικοινωνία')+rows('orders','🛒 Παραγγελίες',o=>o.product_name||'Παραγγελία')+rows('finance','💰 Οικονομικές εγγραφές',o=>(o.transaction_type==='income'?'Έσοδο':'Έξοδο')+' — '+(o.amount??'')+' €')+rows('calendar','🗓️ Ημερολόγιο',o=>o.title||o.event_type||'Καταχώρηση')+rows('programs','🥗 Διατροφικά προγράμματα',o=>o.title||'Πρόγραμμα')+rows('client_trainings','🎓 Εκπαιδεύσεις πελάτη',o=>o.title||'Εκπαίδευση')+rows('wellness_visits','🌿 Επισκέψεις Wellness',o=>o.consumed||'Επίσκεψη')+rows('communications','💬 Ιστορικό επικοινωνίας',o=>o.title||o.communication_type||'Επικοινωνία')+'</section>';document.getElementById('backClients').onclick=()=>location.hash='#clients';document.getElementById('editClient').onclick=()=>edit('clients',id);document.getElementById('newAppointment').onclick=()=>edit('appointments',null,{client_id:id});document.getElementById('newTanita').onclick=()=>edit('tanita',null,{client_id:id});document.getElementById('newFollowup').onclick=()=>edit('followups',null,{client_id:id})}
