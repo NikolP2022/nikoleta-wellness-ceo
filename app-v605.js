@@ -167,6 +167,16 @@ function home(){
  });
  view.querySelectorAll('[data-home-new]').forEach(b=>b.onclick=()=>edit(b.dataset.homeNew,null));
  view.querySelectorAll('.dashboard-panel-button[role="button"]').forEach(b=>b.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();b.click()}}));
+ view.insertAdjacentHTML('beforeend',weeklyPlan());
+ const refreshSchedule=()=>{const w=view.querySelector('.weekly-wrap');if(w)w.outerHTML=weeklyPlan();wireSchedule()};
+ const wireSchedule=()=>{
+   const prev=view.querySelector('#wprev'),next=view.querySelector('#wnext'),now=view.querySelector('#wtoday');
+   if(prev)prev.onclick=()=>{homeWeekOffset--;refreshSchedule()};
+   if(next)next.onclick=()=>{homeWeekOffset++;refreshSchedule()};
+   if(now)now.onclick=()=>{homeWeekOffset=0;refreshSchedule()};
+   view.querySelectorAll('[data-open-schedule]').forEach(b=>b.onclick=()=>edit(b.dataset.openKey,b.dataset.openId));
+ };
+ wireSchedule();
 }
 function folder(k){let arr=cache[k]||[];let cards=arr.map(o=>'<article class="item"><b>'+esc(titleOf(k,o))+'</b>'+details(k,o)+'<div class="actions">'+(k==='clients'?'<button class="primary" data-profile="'+o.id+'">📁 Άνοιγμα φακέλου</button>':k==='partners'?'<button class="primary" data-partner-profile="'+o.id+'">📁 Άνοιγμα φακέλου</button>':'')+'<button class="primary" data-edit="'+o.id+'">✏️ Επεξεργασία</button>'+(k==='tanita'?'':'<button class="gold" data-rem="'+o.id+'">🔔 Ειδοποίηση</button>')+'<button class="danger" data-del="'+o.id+'">🗑️ Διαγραφή</button></div></article>').join('');
  view.innerHTML='<section class="page"><div class="dashboard-section-title"><b>'+F[k][0]+' '+F[k][1].toUpperCase()+'</b><span class="muted">'+arr.length+' καταχωρήσεις</span></div><div class="bar"><button class="primary" id="add">＋ Νέα εγγραφή</button><button class="gold" id="nall">🔔 Νέα υπενθύμιση</button></div><div class="list">'+(cards||'<div class="empty">Δεν υπάρχουν ακόμη καταχωρήσεις.</div>')+'</div></section>';
