@@ -156,6 +156,7 @@ function home(){
  '<button class="primary dashboard-cta" data-home-new="appointments">＋ ΝΕΑ ΕΝΕΡΓΕΙΑ</button>'+
  '</section>';
  bindNav();
+ view.querySelectorAll('.dashboard-stat-action').forEach(b=>b.addEventListener('click',e=>e.stopPropagation()));
  view.querySelectorAll('[data-home-edit]').forEach(b=>b.onclick=e=>{e.stopPropagation();edit(b.dataset.homeEdit,b.dataset.id)});
  view.querySelectorAll('[data-goal]').forEach(b=>b.onclick=()=>{
    const g=b.dataset.goal;
