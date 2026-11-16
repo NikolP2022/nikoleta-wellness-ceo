@@ -1,12 +1,20 @@
 {
-  "name":"Nikoleta Wellness CEO — Learning Center",
-  "short_name":"CEO Learning",
-  "start_url":"./index.html",
-  "scope":"./",
-  "display":"standalone",
-  "background_color":"#f7f5ee",
-  "theme_color":"#123f2d",
-  "lang":"el",
-  "description":"Business, Leadership & Learning Center με τοπική αποθήκευση.",
-  "icons":[{"src":"./icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}]
+  "name": "Nikoleta Wellness CEO — Learning Center",
+  "short_name": "CEO Learning",
+  "start_url": "/nikoleta-wellness-ceo/learning-center/index.html",
+  "scope": "/nikoleta-wellness-ceo/learning-center/",
+  "display": "standalone",
+  "background_color": "#f7f5ee",
+  "theme_color": "#123f2d",
+  "lang": "el",
+  "description": "Business, Leadership & Learning Center με τοπική αποθήκευση.",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "id": "/nikoleta-wellness-ceo/learning-center/"
 }
