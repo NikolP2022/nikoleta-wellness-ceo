@@ -244,6 +244,8 @@ function home(){
    view.querySelectorAll('[data-open-schedule]').forEach(b=>b.onclick=()=>edit(b.dataset.openKey,b.dataset.openId));
  };
  wireSchedule();
+ const updateWelcome=()=>{const el=view.querySelector('.dashboard-greeting h2');if(!el)return;const hour=Number(new Intl.DateTimeFormat('en-GB',{hour:'2-digit',hourCycle:'h23',timeZone:'Europe/Athens'}).format(new Date()));el.textContent=hour>=23?'Καληνύχτα, Νικολέτα! 🌙':hour>=18?'Καλό βράδυ, Νικολέτα! 🌙':hour>=12?'Καλησπέρα, Νικολέτα! ☀️':'Καλημέρα, Νικολέτα! ☀️'};
+ updateWelcome();if(window.__nwWelcomeTimer)clearInterval(window.__nwWelcomeTimer);window.__nwWelcomeTimer=setInterval(updateWelcome,60000);
 }
 function folder(k){let arr=cache[k]||[];let cards=arr.map(o=>'<article class="item"><b>'+esc(titleOf(k,o))+'</b>'+details(k,o)+'<div class="actions">'+(k==='clients'?'<button class="primary" data-profile="'+o.id+'">📁 Άνοιγμα φακέλου</button>':k==='partners'?'<button class="primary" data-partner-profile="'+o.id+'">📁 Άνοιγμα φακέλου</button>':'')+'<button class="primary" data-edit="'+o.id+'">✏️ Επεξεργασία</button>'+(k==='tanita'?'':'<button class="gold" data-rem="'+o.id+'">🔔 Ειδοποίηση</button>')+'<button class="danger" data-del="'+o.id+'">🗑️ Διαγραφή</button></div></article>').join('');
  view.innerHTML='<section class="page"><div class="dashboard-section-title"><b>'+F[k][0]+' '+F[k][1].toUpperCase()+'</b><span class="muted">'+arr.length+' καταχωρήσεις</span></div><div class="bar"><button class="primary" id="add">＋ Νέα εγγραφή</button><button class="gold" id="nall">🔔 Νέα υπενθύμιση</button></div><div class="list">'+(cards||'<div class="empty">Δεν υπάρχουν ακόμη καταχωρήσεις.</div>')+'</div></section>';
