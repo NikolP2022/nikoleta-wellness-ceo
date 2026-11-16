@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#123f2d">
+<meta name="description" content="Nikoleta Wellness CEO — Business, Leadership & Learning Center">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<title>Nikoleta Wellness CEO — Learning Center</title>
+<style>
+:root{--green:#123f2d;--green2:#1d6847;--gold:#c7a45b;--cream:#f7f5ee;--ink:#19372b;--muted:#6d7d73;--line:#e5e8df;--white:#fff;--shadow:0 12px 34px #173c2a12}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,textarea{font:inherit}button{cursor:pointer}.top{background:linear-gradient(135deg,#103c2a,#1d6544);color:#fff;padding:24px max(18px,calc((100vw - 1100px)/2));border-bottom:3px solid var(--gold)}.brand{font-size:12px;letter-spacing:2px;color:#e8d8aa;font-weight:800}.top h1{font-size:clamp(23px,4vw,34px);margin:8px 0 4px;letter-spacing:.3px}.top p{margin:0;color:#d9e6dc;font-size:13px}.wrap{max-width:1100px;margin:auto;padding:20px 16px 60px}.hero{display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin:8px 0 20px}.hero h2{margin:0;font-size:22px}.hero p{margin:5px 0;color:var(--muted);font-size:13px}.actions{display:flex;gap:8px;flex-wrap:wrap}.btn{border:0;border-radius:12px;padding:11px 15px;font-weight:750;background:var(--green);color:#fff}.btn.gold{background:var(--gold);color:#26382c}.btn.light{background:#fff;color:var(--green);border:1px solid var(--line)}.btn.danger{background:#9e3e35}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:13px}.tile,.panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow)}.tile{min-height:142px;text-align:left;color:var(--ink);transition:.15s}.tile:hover{transform:translateY(-2px);border-color:var(--gold)}.ico{font-size:25px;margin-bottom:12px}.tile h3{margin:0 0 6px;font-size:16px}.tile p{margin:0;color:var(--muted);font-size:12px;line-height:1.5}.sectionhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:26px 0 12px}.sectionhead h3{margin:0;font-size:17px}.muted{color:var(--muted);font-size:13px}.hidden{display:none!important}.field{display:grid;gap:6px;margin:12px 0}.field label{font-size:12px;font-weight:800;color:#486052}.field input,.field textarea{width:100%;border:1px solid #dce3db;border-radius:11px;padding:12px;background:#fff;color:var(--ink)}.field textarea{min-height:110px;resize:vertical}.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.seminar{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:14px;border:1px solid var(--line);border-radius:14px;margin:9px 0;background:#fff}.seminar strong{display:block}.seminar small{color:var(--muted)}.pill{font-size:11px;border-radius:99px;background:#edf5ef;color:#276342;padding:5px 9px;font-weight:800}.recbox{background:#f1f6f0;border:1px solid #dce9dc;border-radius:16px;padding:16px;margin:14px 0}.timer{font-size:34px;font-weight:850;letter-spacing:1px;font-variant-numeric:tabular-nums}.fileitem{display:flex;justify-content:space-between;gap:10px;align-items:center;border-bottom:1px solid var(--line);padding:10px 0}.fileitem:last-child{border:0}.note{font-size:12px;color:var(--muted);line-height:1.55}.footer{text-align:center;color:#809087;font-size:11px;padding:26px 0}.tabs{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.tab{border:1px solid var(--line);border-radius:99px;padding:8px 12px;background:#fff;color:var(--green);font-size:12px;font-weight:750}.tab.active{background:var(--green);color:#fff}@media(max-width:600px){.wrap{padding:16px 12px 44px}.seminar{align-items:flex-start;flex-direction:column}.top{padding:20px 16px}.timer{font-size:28px}}
+</style>
+</head>
+<body>
+<header class="top"><div class="brand">NIKOΛΕΤΑ WELLNESS CEO</div><h1>Business • Leadership • Learning Center</h1><p>Οργάνωση, γνώση και προσωπική ανάπτυξη — σε έναν χώρο.</p></header>
+<main class="wrap">
+<section id="home">
+<div class="hero"><div><h2>Καλώς ήρθες στο Learning Center</h2><p>Ο προσωπικός σου χώρος οργάνωσης και εκπαίδευσης.</p></div><div class="actions"><button class="btn gold" id="newSeminar">＋ Νέο σεμινάριο</button><button class="btn light" id="backupBtn">Αντίγραφο ασφαλείας</button></div></div>
+<div class="grid">
+<button class="tile" data-open="goals"><div class="ico">🎯</div><h3>Στόχοι & Αποτελέσματα</h3><p>Ημερήσιοι στόχοι, πρόοδος και προσωπικές ενέργειες.</p></button>
+<button class="tile" data-open="content"><div class="ico">📣</div><h3>Social Media Studio</h3><p>Ιδέες, αναρτήσεις και ημερολόγιο περιεχομένου.</p></button>
+<button class="tile" data-open="network"><div class="ico">🤝</div><h3>Δίκτυο & Συνεργασίες</h3><p>Επαφές, συνεργασίες και επόμενα βήματα.</p></button>
+<button class="tile" data-open="events"><div class="ico">📅</div><h3>Events & Εκδηλώσεις</h3><p>Παρουσιάσεις, συναντήσεις και συμμετοχές.</p></button>
+<button class="tile" data-open="training"><div class="ico">🎓</div><h3>Εκπαίδευση & Ανάπτυξη</h3><p>NLP, επικοινωνία, ηγεσία και προσωπικές σημειώσεις.</p></button>
+<button class="tile" data-open="library"><div class="ico">📚</div><h3>Βιβλιοθήκη Υλικού</h3><p>Οργάνωση εκπαιδευτικών αρχείων και εγγράφων.</p></button>
+<button class="tile" data-open="audio"><div class="ico">🎙️</div><h3>Audio Academy</h3><p>Ηχογραφήσεις, αρχεία σεμιναρίων και απομαγνητοφωνήσεις.</p></button>
+<button class="tile" data-open="settings"><div class="ico">⚙️</div><h3>Ρυθμίσεις & Μεταφορά</h3><p>USB, εξαγωγή και επαναφορά δεδομένων.</p></button>
+</div>
+<div class="sectionhead"><h3>Πρόσφατα σεμινάρια</h3><span class="muted" id="seminarCount">0 σεμινάρια</span></div><div id="recentList"><p class="muted">Δεν έχεις δημιουργήσει ακόμη σεμινάριο.</p></div>
+</section>
+<section id="view" class="hidden"></section>
+<div class="footer">NIKOΛΕΤΑ WELLNESS CEO · Τα δεδομένα αποθηκεύονται τοπικά σε αυτή τη συσκευή.</div>
+</main>
+<script src="./app.js"></script>
+</body></html>
